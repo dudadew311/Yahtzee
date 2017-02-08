@@ -463,7 +463,7 @@ public class GamePlayController {
 	}
 
 	/**
-	 * New game.
+	 * Sets up a New game.
 	 */
 	public void newGame(){
 		playerUp = 0;
@@ -616,7 +616,6 @@ public class GamePlayController {
 	private void setDie1(){
 		die1.setSide();
 
-		try {
 			switch(die1.getSide()){
 			case 1:
 				dieV1.setImage(die1pic);
@@ -637,10 +636,6 @@ public class GamePlayController {
 				dieV1.setImage(die6pic);
 				break;
 			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	/**
@@ -683,8 +678,6 @@ public class GamePlayController {
 	private void setDie3(){
 		die3.setSide();
 
-		
-		try {
 			switch(die3.getSide()){
 			case 1:
 				dieV3.setImage(die1pic);
@@ -705,10 +698,6 @@ public class GamePlayController {
 				dieV3.setImage(die6pic);
 				break;
 			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 	/**
@@ -717,8 +706,6 @@ public class GamePlayController {
 	private void setDie4(){
 		die4.setSide();
 
-		
-		try {
 			switch(die4.getSide()){
 			case 1:
 				dieV4.setImage(die1pic);
@@ -739,10 +726,6 @@ public class GamePlayController {
 				dieV4.setImage(die6pic);
 				break;
 			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 	/**
@@ -751,8 +734,6 @@ public class GamePlayController {
 	private void setDie5(){
 		die5.setSide();
 
-		
-		try {
 			switch(die5.getSide()){
 			case 1:
 				dieV5.setImage(die1pic);
@@ -773,14 +754,11 @@ public class GamePlayController {
 				dieV5.setImage(die6pic);
 				break;
 			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 	}
 	
 	/**
-	 * Lock die 1.
+	 * Locks die 1.
 	 */
 	@FXML
 	private void lockDie1() {
@@ -794,7 +772,7 @@ public class GamePlayController {
 	}
 	
 	/**
-	 * Lock die 2.
+	 * Locks die 2.
 	 */
 	@FXML
 	private void lockDie2() {
@@ -808,7 +786,7 @@ public class GamePlayController {
 	}
 	
 	/**
-	 * Lock die 3.
+	 * Locks die 3.
 	 */
 	@FXML
 	private void lockDie3() {
