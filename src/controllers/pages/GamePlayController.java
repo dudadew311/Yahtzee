@@ -337,8 +337,28 @@ public class GamePlayController {
 	/** The die 5. */
 	Die die5 = new Die();
 	
+	
+	
+	/** The die 1 pic. */
+	private Image die1pic = new Image("/images/Die1.png");
+	
+	/** The die 2 pic. */
+	private Image die2pic = new Image("/images/Die2.png");
+	
+	/** The die 3 pic. */
+	private Image die3pic = new Image("/images/Die3.png");
+	
+	/** The die 4 pic. */
+	private Image die4pic = new Image("/images/Die4.png");
+	
+	/** The die 5 pic. */
+	private Image die5pic = new Image("/images/Die5.png");
+	
+	/** The die 6 pic. */
+	private Image die6pic = new Image("/images/Die6.png");
+	
 	/**
-	 * Inits the.
+	 * Initializes the Main controller.
 	 *
 	 * @param mainController the main controller
 	 */
@@ -347,7 +367,8 @@ public class GamePlayController {
 	}
 	
  	/**
-	  * Sets the p1.
+	  * Checks to see if player 1 was entered
+	  * If true, Sets up the player.
 	  *
 	  * @param p the new p1
 	  */
@@ -370,7 +391,8 @@ public class GamePlayController {
 	}
 	
 	/**
-	 * Sets the p2.
+	 * Checks to see if player 2 was entered
+	 * If true, Sets up the player.
 	 *
 	 * @param p the new p2
 	 */
@@ -393,7 +415,8 @@ public class GamePlayController {
 	}
 	
 	/**
-	 * Sets the p3.
+	 * Checks to see if player 3 was entered
+	 * If true, Sets up the player.
 	 *
 	 * @param p the new p3
 	 */
@@ -416,7 +439,8 @@ public class GamePlayController {
 	}
 	
 	/**
-	 * Sets the p4.
+	 * Checks to see if player 4 was entered
+	 * If true, Sets up the player.
 	 *
 	 * @param p the new p4
 	 */
@@ -591,34 +615,31 @@ public class GamePlayController {
 	 */
 	private void setDie1(){
 		die1.setSide();
-	
-		Image one1Roll = new Image("die1.png");
-		Image two2Roll = new Image("die2.png");
-		Image three3Roll = new Image("die3.png");
-		Image four4Roll = new Image("die4.png");
-		Image five5Roll = new Image("die5.png");
-		Image six6Roll = new Image("die6.png");
-		
-		
-		switch(die1.getSide()){
-		case 1:
-			dieV1.setImage(one1Roll);
-			break;
-		case 2:
-			dieV1.setImage(two2Roll);
-			break;
-		case 3:
-			dieV1.setImage(three3Roll);
-			break;
-		case 4:
-			dieV1.setImage(four4Roll);
-			break;
-		case 5:
-			dieV1.setImage(five5Roll);
-			break;
-		case 6:
-			dieV1.setImage(six6Roll);
-			break;
+
+		try {
+			switch(die1.getSide()){
+			case 1:
+				dieV1.setImage(die1pic);
+				break;
+			case 2:
+				dieV1.setImage(die2pic);
+				break;
+			case 3:
+				dieV1.setImage(die3pic);
+				break;
+			case 4:
+				dieV1.setImage(die4pic);
+				break;
+			case 5:
+				dieV1.setImage(die5pic);
+				break;
+			case 6:
+				dieV1.setImage(die6pic);
+				break;
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
@@ -626,35 +647,33 @@ public class GamePlayController {
 	 * Sets the die 2.
 	 */
 	private void setDie2(){
-		die2.setSide();
-		
-		Image one1Roll = new Image("die1.png");
-		Image two2Roll = new Image("die2.png");
-		Image three3Roll = new Image("die3.png");
-		Image four4Roll = new Image("die4.png");
-		Image five5Roll = new Image("die5.png");
-		Image six6Roll = new Image("die6.png");
-		
-		
-		switch(die2.getSide()){
-		case 1:
-			dieV2.setImage(one1Roll);
-			break;
-		case 2:
-			dieV2.setImage(two2Roll);
-			break;
-		case 3:
-			dieV2.setImage(three3Roll);
-			break;
-		case 4:
-			dieV2.setImage(four4Roll);
-			break;
-		case 5:
-			dieV2.setImage(five5Roll);
-			break;
-		case 6:
-			dieV2.setImage(six6Roll);
-			break;
+		try {
+			die2.setSide();
+			
+			
+			switch(die2.getSide()){
+			case 1:
+				dieV2.setImage(die1pic);
+				break;
+			case 2:
+				dieV2.setImage(die2pic);
+				break;
+			case 3:
+				dieV2.setImage(die3pic);
+				break;
+			case 4:
+				dieV2.setImage(die4pic);
+				break;
+			case 5:
+				dieV2.setImage(die5pic);
+				break;
+			case 6:
+				dieV2.setImage(die6pic);
+				break;
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	
@@ -663,34 +682,32 @@ public class GamePlayController {
 	 */
 	private void setDie3(){
 		die3.setSide();
+
 		
-		Image one1Roll = new Image("die1.png");
-		Image two2Roll = new Image("die2.png");
-		Image three3Roll = new Image("die3.png");
-		Image four4Roll = new Image("die4.png");
-		Image five5Roll = new Image("die5.png");
-		Image six6Roll = new Image("die6.png");
-		
-		
-		switch(die3.getSide()){
-		case 1:
-			dieV3.setImage(one1Roll);
-			break;
-		case 2:
-			dieV3.setImage(two2Roll);
-			break;
-		case 3:
-			dieV3.setImage(three3Roll);
-			break;
-		case 4:
-			dieV3.setImage(four4Roll);
-			break;
-		case 5:
-			dieV3.setImage(five5Roll);
-			break;
-		case 6:
-			dieV3.setImage(six6Roll);
-			break;
+		try {
+			switch(die3.getSide()){
+			case 1:
+				dieV3.setImage(die1pic);
+				break;
+			case 2:
+				dieV3.setImage(die2pic);
+				break;
+			case 3:
+				dieV3.setImage(die3pic);
+				break;
+			case 4:
+				dieV3.setImage(die4pic);
+				break;
+			case 5:
+				dieV3.setImage(die5pic);
+				break;
+			case 6:
+				dieV3.setImage(die6pic);
+				break;
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	
@@ -699,34 +716,32 @@ public class GamePlayController {
 	 */
 	private void setDie4(){
 		die4.setSide();
+
 		
-		Image one1Roll = new Image("die1.png");
-		Image two2Roll = new Image("die2.png");
-		Image three3Roll = new Image("die3.png");
-		Image four4Roll = new Image("die4.png");
-		Image five5Roll = new Image("die5.png");
-		Image six6Roll = new Image("die6.png");
-		
-		
-		switch(die4.getSide()){
-		case 1:
-			dieV4.setImage(one1Roll);
-			break;
-		case 2:
-			dieV4.setImage(two2Roll);
-			break;
-		case 3:
-			dieV4.setImage(three3Roll);
-			break;
-		case 4:
-			dieV4.setImage(four4Roll);
-			break;
-		case 5:
-			dieV4.setImage(five5Roll);
-			break;
-		case 6:
-			dieV4.setImage(six6Roll);
-			break;
+		try {
+			switch(die4.getSide()){
+			case 1:
+				dieV4.setImage(die1pic);
+				break;
+			case 2:
+				dieV4.setImage(die2pic);
+				break;
+			case 3:
+				dieV4.setImage(die3pic);
+				break;
+			case 4:
+				dieV4.setImage(die4pic);
+				break;
+			case 5:
+				dieV4.setImage(die5pic);
+				break;
+			case 6:
+				dieV4.setImage(die6pic);
+				break;
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	
@@ -735,34 +750,32 @@ public class GamePlayController {
 	 */
 	private void setDie5(){
 		die5.setSide();
+
 		
-		Image one1Roll = new Image("die1.png");
-		Image two2Roll = new Image("die2.png");
-		Image three3Roll = new Image("die3.png");
-		Image four4Roll = new Image("die4.png");
-		Image five5Roll = new Image("die5.png");
-		Image six6Roll = new Image("die6.png");
-		
-		
-		switch(die5.getSide()){
-		case 1:
-			dieV5.setImage(one1Roll);
-			break;
-		case 2:
-			dieV5.setImage(two2Roll);
-			break;
-		case 3:
-			dieV5.setImage(three3Roll);
-			break;
-		case 4:
-			dieV5.setImage(four4Roll);
-			break;
-		case 5:
-			dieV5.setImage(five5Roll);
-			break;
-		case 6:
-			dieV5.setImage(six6Roll);
-			break;
+		try {
+			switch(die5.getSide()){
+			case 1:
+				dieV5.setImage(die1pic);
+				break;
+			case 2:
+				dieV5.setImage(die2pic);
+				break;
+			case 3:
+				dieV5.setImage(die3pic);
+				break;
+			case 4:
+				dieV5.setImage(die4pic);
+				break;
+			case 5:
+				dieV5.setImage(die5pic);
+				break;
+			case 6:
+				dieV5.setImage(die6pic);
+				break;
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	
