@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="539.0" prefWidth="699.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.pages.GamePlayController">
+   <bottom>
+      <HBox fillHeight="false" prefHeight="74.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Region prefHeight="105.0" prefWidth="25.0" HBox.hgrow="ALWAYS" />
+            <Button fx:id="rollButton" alignment="CENTER" mnemonicParsing="false" onAction="#rollButtonClick" prefHeight="101.0" prefWidth="80.0" text="Roll">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </Button>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <ImageView fx:id="dieV1" fitHeight="78.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true" />
+                  <ToggleButton fx:id="lockButton1" mnemonicParsing="false" onAction="#lockDie1" prefHeight="27.0" prefWidth="74.0" text="LOCK">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                     </padding></ToggleButton>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="510.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <ImageView fx:id="dieV2" fitHeight="78.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true" />
+                  <ToggleButton fx:id="lockButton2" mnemonicParsing="false" onAction="#lockDie2" prefHeight="27.0" prefWidth="74.0" text="LOCK">
+                     <padding>
+                        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin></ToggleButton>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="410.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <ImageView fx:id="dieV3" fitHeight="78.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true" />
+                  <ToggleButton fx:id="lockButton3" mnemonicParsing="false" onAction="#lockDie3" prefHeight="27.0" prefWidth="74.0" text="LOCK">
+                     <padding>
+                        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin></ToggleButton>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="310.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <ImageView fx:id="dieV4" fitHeight="78.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true" />
+                  <ToggleButton fx:id="lockButton4" mnemonicParsing="false" onAction="#lockDie4" prefHeight="27.0" prefWidth="74.0" text="LOCK">
+                     <padding>
+                        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin></ToggleButton>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="343.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <ImageView fx:id="dieV5" fitHeight="78.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true" />
+                  <ToggleButton fx:id="lockButton5" mnemonicParsing="false" onAction="#lockDie5" prefHeight="27.0" prefWidth="74.0" text="LOCK">
+                     <padding>
+                        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin></ToggleButton>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </bottom>
+   <center>
+      <SplitPane>
+         <items>
+            <TabPane fx:id="playerTabPane" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab fx:id="player1tab" text="Player 1">
+                  <content>
+                    <AnchorPane>
+                           <children>
+                              <HBox layoutX="133.0" layoutY="77.0" prefHeight="366.0" prefWidth="564.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <ImageView fitHeight="367.0" fitWidth="209.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../bin/UpperSectionScore.png" />
+                                       </image>
+                                    </ImageView>
+                                    <VBox prefHeight="254.0" prefWidth="69.0">
+                                       <children>
+                                          <Region prefHeight="47.0" prefWidth="69.0" />
+                                          <CheckBox fx:id="acesP1" alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="67.0" text="0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="twosP1" alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="69.0" text="0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="threesP1" alignment="CENTER" mnemonicParsing="false" prefHeight="37.0" prefWidth="69.0" text="0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="foursP1" alignment="CENTER" mnemonicParsing="false" prefHeight="39.0" prefWidth="69.0" text="0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="fivesP1" alignment="CENTER" mnemonicParsing="false" prefHeight="36.0" prefWidth="69.0" text="0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="sixesP1" alignment="CENTER" mnemonicParsing="false" prefHeight="37.0" prefWidth="69.0" text="0" textAlignment="CENTER" />
+                                       </children>
+                                    </VBox>
+                                    <ImageView fitHeight="367.0" fitWidth="209.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../bin/LowerSectionScore.png" />
+                                       </image>
+                                    </ImageView>
+                                    <VBox prefHeight="366.0" prefWidth="82.0">
+                                       <children>
+                                          <VBox prefHeight="267.0" prefWidth="82.0">
+                                             <children>
+                                                <Region prefHeight="26.0" prefWidth="73.0" />
+                                                <CheckBox fx:id="l3oKP1" alignment="CENTER" mnemonicParsing="false" prefHeight="31.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="l4oKP1" alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="fullHouseP1" alignment="CENTER" mnemonicParsing="false" prefHeight="32.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="smStrP1" alignment="CENTER" mnemonicParsing="false" prefHeight="32.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="lrgStrP1" alignment="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="yahtzee1P1" alignment="CENTER" mnemonicParsing="false" prefHeight="32.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="chanceP1" alignment="CENTER" mnemonicParsing="false" prefHeight="29.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                                                <HBox prefHeight="27.0" prefWidth="82.0">
+                                                   <children>
+                                                      <CheckBox fx:id="yahtzee2P1" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="33.0" prefWidth="25.0" textAlignment="CENTER" wrapText="true" />
+                                                      <CheckBox fx:id="yahtzee3P1" alignment="CENTER" contentDisplay="BOTTOM" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="25.0" />
+                                                      <CheckBox fx:id="yahtzee4P1" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="34.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="28.0" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab fx:id="player2tab" text="Player 2">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <HBox layoutX="133.0" layoutY="77.0" prefHeight="254.0" prefWidth="492.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <ImageView fitHeight="367.0" fitWidth="235.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../Yahtzee/bin/UpperSectionScore.png" />
+                                       </image>
+                                    </ImageView>
+                                    <VBox prefHeight="254.0" prefWidth="69.0">
+                                       <children>
+                                          <Region prefHeight="46.0" prefWidth="69.0" />
+                                          <CheckBox fx:id="acesP2" alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="67.0" text="0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="twosP2" alignment="CENTER" mnemonicParsing="false" prefHeight="37.0" prefWidth="69.0" text="0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="threesP2" alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="69.0" text="0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="foursP2" alignment="CENTER" mnemonicParsing="false" prefHeight="37.0" prefWidth="69.0" text="0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="fivesP2" alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="69.0" text="0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="sixesP2" alignment="CENTER" mnemonicParsing="false" prefHeight="37.0" prefWidth="69.0" text="0" textAlignment="CENTER" />
+                                       </children>
+                                    </VBox>
+                                    <ImageView fitHeight="366.0" fitWidth="221.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../Yahtzee/bin/LowerSectionScore.png" />
+                                       </image>
+                                    </ImageView>
+                                    <VBox prefHeight="254.0" prefWidth="73.0">
+                                       <children>
+                                          <VBox prefHeight="371.0" prefWidth="73.0">
+                                             <children>
+                                                <Region prefHeight="26.0" prefWidth="73.0" />
+                                                <CheckBox fx:id="l3oKP2" alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="l4oKP2" alignment="CENTER" mnemonicParsing="false" prefHeight="32.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="fullHouseP2" alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="smStrP2" alignment="CENTER" mnemonicParsing="false" prefHeight="31.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="lrgStrP2" alignment="CENTER" mnemonicParsing="false" prefHeight="32.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="yahtzee1P2" alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="chanceP2" alignment="CENTER" mnemonicParsing="false" prefHeight="31.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                                                <HBox prefHeight="25.0" prefWidth="73.0">
+                                                   <children>
+                                                      <CheckBox fx:id="yahtzee2P2" alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="26.0" prefWidth="24.0" textAlignment="CENTER" wrapText="true" />
+                                                      <CheckBox fx:id="yahtzee3P2" alignment="CENTER" contentDisplay="BOTTOM" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="24.0" />
+                                                      <CheckBox fx:id="yahtzee4P2" alignment="CENTER" contentDisplay="BOTTOM" layoutX="34.0" layoutY="10.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="28.0" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab fx:id="player3tab" text="Player 3">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <HBox layoutX="133.0" layoutY="77.0" prefHeight="366.0" prefWidth="564.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <ImageView fitHeight="370.0" fitWidth="211.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../Yahtzee/bin/UpperSectionScore.png" />
+                                       </image>
+                                    </ImageView>
+                                    <VBox prefHeight="366.0" prefWidth="73.0">
+                                       <children>
+                                          <Region prefHeight="46.0" prefWidth="73.0" />
+                                          <CheckBox fx:id="acesP3" alignment="CENTER" mnemonicParsing="false" prefHeight="36.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="twosP3" alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="72.0" text="0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="threesP3" alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="foursP3" alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="fivesP3" alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="sixesP3" alignment="CENTER" mnemonicParsing="false" prefHeight="37.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                                       </children>
+                                    </VBox>
+                                    <ImageView fitHeight="370.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../Yahtzee/bin/LowerSectionScore.png" />
+                                       </image>
+                                    </ImageView>
+                                    <VBox>
+                                       <children>
+                                          <VBox prefHeight="391.0" prefWidth="76.0">
+                                             <children>
+                                                <Region prefHeight="26.0" prefWidth="76.0" />
+                                                <CheckBox fx:id="l3oKP3" alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="76.0" text="0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="l4oKP3" alignment="CENTER" mnemonicParsing="false" prefHeight="31.0" prefWidth="76.0" text="0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="fullHouseP3" alignment="CENTER" mnemonicParsing="false" prefHeight="31.0" prefWidth="76.0" text="0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="smStrP3" alignment="CENTER" mnemonicParsing="false" prefHeight="31.0" prefWidth="76.0" text="0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="lrgStrP3" alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="76.0" text="0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="yahtzee1P3" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="75.0" text="0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="chanceP3" alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="76.0" text="0" textAlignment="CENTER" />
+                                                <HBox prefHeight="26.0" prefWidth="76.0">
+                                                   <children>
+                                                      <CheckBox fx:id="yahtzee2P3" alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" prefHeight="36.0" prefWidth="24.0" textAlignment="CENTER" wrapText="true" />
+                                                      <CheckBox fx:id="yahtzee3P3" alignment="CENTER" contentDisplay="BOTTOM" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="24.0" />
+                                                      <CheckBox fx:id="yahtzee4P3" alignment="CENTER" contentDisplay="BOTTOM" layoutX="34.0" layoutY="10.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="28.0" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab fx:id="player4tab" text="Player 4">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <HBox layoutX="133.0" layoutY="77.0" prefHeight="254.0" prefWidth="492.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <ImageView fitHeight="426.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../Yahtzee/bin/UpperSectionScore.png" />
+                                       </image>
+                                    </ImageView>
+                                    <VBox prefHeight="254.0" prefWidth="69.0">
+                                       <children>
+                                          <Region prefHeight="46.0" prefWidth="69.0" />
+                                          <CheckBox fx:id="acesP4" alignment="CENTER" mnemonicParsing="false" prefHeight="37.0" prefWidth="67.0" text="0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="twosP4" alignment="CENTER" mnemonicParsing="false" prefHeight="39.0" prefWidth="69.0" text="0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="threesP4" alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="69.0" text="0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="foursP4" alignment="CENTER" mnemonicParsing="false" prefHeight="37.0" prefWidth="69.0" text="0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="fivesP4" alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="69.0" text="0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="sixesP4" alignment="CENTER" mnemonicParsing="false" prefHeight="37.0" prefWidth="69.0" text="0" textAlignment="CENTER" />
+                                       </children>
+                                    </VBox>
+                                    <ImageView fitHeight="369.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../Yahtzee/bin/LowerSectionScore.png" />
+                                       </image>
+                                    </ImageView>
+                                    <VBox prefHeight="254.0" prefWidth="73.0">
+                                       <children>
+                                          <VBox prefHeight="379.0" prefWidth="73.0">
+                                             <children>
+                                                <Region prefHeight="27.0" prefWidth="73.0" />
+                                                <CheckBox fx:id="l3oKP4" alignment="CENTER" mnemonicParsing="false" prefHeight="31.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="l4oKP4" alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="fullHouseP4" alignment="CENTER" mnemonicParsing="false" prefHeight="32.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="smStrP4" alignment="CENTER" mnemonicParsing="false" prefHeight="31.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="lrgStrP4" alignment="CENTER" mnemonicParsing="false" prefHeight="31.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="yahtzee1P4" alignment="CENTER" mnemonicParsing="false" prefHeight="31.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="chanceP4" alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="73.0" text="0" textAlignment="CENTER" />
+                                                <HBox prefHeight="27.0" prefWidth="73.0">
+                                                   <children>
+                                                      <CheckBox fx:id="yahtzee2P4" alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" prefHeight="36.0" prefWidth="24.0" textAlignment="CENTER" wrapText="true" />
+                                                      <CheckBox fx:id="yahtzee3P4" alignment="CENTER" contentDisplay="BOTTOM" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="24.0" />
+                                                      <CheckBox fx:id="yahtzee4P4" alignment="CENTER" contentDisplay="BOTTOM" layoutX="34.0" layoutY="10.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="28.0" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </items>
+      </SplitPane>
+   </center>
+   <top>
+      <HBox prefHeight="23.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Region prefHeight="23.0" prefWidth="80.0" />
+            <Text fx:id="playerUpLbl" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="RIGHT" wrappingWidth="100.6875">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  is up!" wrappingWidth="60.0908203125">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Region prefHeight="27.0" prefWidth="98.0" />
+            <Button fx:id="score" mnemonicParsing="false" onAction="#selectScoreClick" prefHeight="27.0" prefWidth="89.0" text="Score" />
+            <Region prefHeight="27.0" prefWidth="179.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Round: ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="roundsLbl" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Region prefHeight="23.0" prefWidth="80.0" />
+         </children></HBox>
+   </top>
+   <right>
+      <VBox prefHeight="292.0" prefWidth="133.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" prefHeight="45.0" prefWidth="133.0" text="Scores:">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="8.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="player1name" alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="170.0" text="Player 1" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <padding>
+                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+               </padding>
+            </Label>
+            <Label fx:id="player1score" alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="170.0" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <padding>
+                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+               </padding>
+            </Label>
+            <Label fx:id="player2name" alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="170.0" text="Player 2" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <padding>
+                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+               </padding>
+            </Label>
+            <Label fx:id="player2score" alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="170.0" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <padding>
+                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+               </padding>
+            </Label>
+            <Label fx:id="player3name" alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="170.0" text="Player 3" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <padding>
+                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+               </padding>
+            </Label>
+            <Label fx:id="player3score" alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="170.0" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <padding>
+                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+               </padding>
+            </Label>
+            <Label fx:id="player4name" alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="170.0" text="Player 4" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <padding>
+                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+               </padding>
+            </Label>
+            <Label fx:id="player4score" alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="170.0" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <padding>
+                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+               </padding>
+            </Label>
+         </children>
+      </VBox>
+   </right>
+</BorderPane>

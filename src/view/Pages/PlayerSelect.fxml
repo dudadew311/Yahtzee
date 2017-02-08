@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="480.0" prefWidth="354.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.pages.PlayerSelectController">
+   <top>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Players Names" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+   </top>
+   <center>
+      <VBox alignment="CENTER" prefHeight="383.0" prefWidth="476.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="player1input" alignment="CENTER" prefHeight="33.0" prefWidth="557.0" promptText="Player 1">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </TextField>
+            <TextField fx:id="player2input" alignment="CENTER" promptText="Player 2">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </TextField>
+            <TextField fx:id="player3input" alignment="CENTER" promptText="Player 3">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </TextField>
+            <TextField fx:id="player4input" alignment="CENTER" promptText="Player 4">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </TextField>
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <VBox alignment="CENTER">
+         <children>
+            <Button fx:id="startButton" mnemonicParsing="false" onAction="#startButtonClick" prefHeight="58.0" prefWidth="160.0" text="Start New Game" BorderPane.alignment="CENTER">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </bottom>
+   <right>
+      <Region prefHeight="383.0" prefWidth="89.0" BorderPane.alignment="CENTER" />
+   </right>
+   <left>
+      <Region prefHeight="383.0" prefWidth="92.0" BorderPane.alignment="CENTER" />
+   </left>
+</BorderPane>
