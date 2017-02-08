@@ -27,6 +27,7 @@ public class MainController {
 		gamePlayController.setP4(Main.player4.getName());
 		gamePlayController.newGame();
 		gamePlayController.resetLocks();
+	
 	}
 
 

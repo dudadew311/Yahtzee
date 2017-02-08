@@ -210,26 +210,44 @@ public class GamePlayController {
 		rollButton.setText("ROLL\n"+ String.valueOf(rollNum) + " Left");
 		roundsLbl.setText(String.valueOf(roundNum+1));
 		
+		
 		if(players[0].isValid()){
 			playerUpLbl.setText(players[0].getName());
 			playerTabPane.getSelectionModel().select(0);
+			unlockRollButton();
+			unlockScoreButton();
 		} else if(players[1].isValid()){
 			playerUpLbl.setText(players[1].getName());
 			playerTabPane.getSelectionModel().select(1);
+			unlockRollButton();
+			unlockScoreButton();
 		} else if(players[2].isValid()){
 			playerUpLbl.setText(players[2].getName());
 			playerTabPane.getSelectionModel().select(2);
+			unlockRollButton();
+			unlockScoreButton();
 		} else if(players[3].isValid()){
 			playerUpLbl.setText(players[3].getName());
 			playerTabPane.getSelectionModel().select(3);
+			unlockRollButton();
+			unlockScoreButton();
 		} else {
 			playerUpLbl.setText("No one");
 			System.out.println("No one is up");
+			lockRollButton();
 		}
 	}
 	
 	private void lockRollButton(){
 		rollButton.setDisable(true);
+	}
+	
+	private void unlockRollButton(){
+		rollButton.setDisable(false);
+	}
+	
+	private void unlockScoreButton(){
+		score.setDisable(false);
 	}
 		
 	
