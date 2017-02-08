@@ -1,5 +1,10 @@
 package controllers.pages;
 
+/**
+ * @author 	Raul Diaz <dudadewe311@gmail.com>
+ * @date 	Created on: Feb 8, 2017
+ */
+
 import java.io.IOException;
 
 import application.Die;
@@ -18,120 +23,335 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class GamePlayController.
+ */
 public class GamePlayController {
 
+	/** The aces P 1. */
 	@FXML private CheckBox acesP1;
+	
+	/** The aces P 2. */
 	@FXML private CheckBox acesP2;
+	
+	/** The aces P 3. */
 	@FXML private CheckBox acesP3;
+	
+	/** The aces P 4. */
 	@FXML private CheckBox acesP4;
+	
+	/** The chance P 1. */
 	@FXML private CheckBox chanceP1;
+	
+	/** The chance P 2. */
 	@FXML private CheckBox chanceP2;
+	
+	/** The chance P 3. */
 	@FXML private CheckBox chanceP3;
+	
+	/** The chance P 4. */
 	@FXML private CheckBox chanceP4;
+	
+	/** The die V 1. */
 	@FXML private ImageView dieV1;
+	
+	/** The die V 2. */
 	@FXML private ImageView dieV2;
+	
+	/** The die V 3. */
 	@FXML private ImageView dieV3;
+	
+	/** The die V 4. */
 	@FXML private ImageView dieV4;
+	
+	/** The die V 5. */
 	@FXML private ImageView dieV5;
+	
+	/** The fives P 1. */
 	@FXML private CheckBox fivesP1;
+	
+	/** The fives P 2. */
 	@FXML private CheckBox fivesP2;
+	
+	/** The fives P 3. */
 	@FXML private CheckBox fivesP3;
+	
+	/** The fives P 4. */
 	@FXML private CheckBox fivesP4;
+	
+	/** The fours P 1. */
 	@FXML private CheckBox foursP1;
+	
+	/** The fours P 2. */
 	@FXML private CheckBox foursP2;
+	
+	/** The fours P 3. */
 	@FXML private CheckBox foursP3;
+	
+	/** The fours P 4. */
 	@FXML private CheckBox foursP4;
+	
+	/** The full house P 1. */
 	@FXML private CheckBox fullHouseP1;
+	
+	/** The full house P 2. */
 	@FXML private CheckBox fullHouseP2;
+	
+	/** The full house P 3. */
 	@FXML private CheckBox fullHouseP3;
+	
+	/** The full house P 4. */
 	@FXML private CheckBox fullHouseP4;
+	
+	/** The l 3 o KP 1. */
 	@FXML private CheckBox l3oKP1;
+	
+	/** The l 3 o KP 2. */
 	@FXML private CheckBox l3oKP2;
+	
+	/** The l 3 o KP 3. */
 	@FXML private CheckBox l3oKP3;
+	
+	/** The l 3 o KP 4. */
 	@FXML private CheckBox l3oKP4;
+	
+	/** The l 4 o KP 1. */
 	@FXML private CheckBox l4oKP1;
+	
+	/** The l 4 o KP 2. */
 	@FXML private CheckBox l4oKP2;
+	
+	/** The l 4 o KP 3. */
 	@FXML private CheckBox l4oKP3;
+	
+	/** The l 4 o KP 4. */
 	@FXML private CheckBox l4oKP4;
+	
+	/** The lock button 1. */
 	@FXML private ToggleButton lockButton1;
+	
+	/** The lock button 2. */
 	@FXML private ToggleButton lockButton2;
+	
+	/** The lock button 3. */
 	@FXML private ToggleButton lockButton3;
+	
+	/** The lock button 4. */
 	@FXML private ToggleButton lockButton4;
+	
+	/** The lock button 5. */
 	@FXML private ToggleButton lockButton5;
+	
+	/** The lrg str P 1. */
 	@FXML private CheckBox lrgStrP1;
+	
+	/** The lrg str P 2. */
 	@FXML private CheckBox lrgStrP2;
+	
+	/** The lrg str P 3. */
 	@FXML private CheckBox lrgStrP3;
+	
+	/** The lrg str P 4. */
 	@FXML private CheckBox lrgStrP4;
+	
+	/** The player 1 name. */
 	@FXML private Label player1name;
+	
+	/** The player 2 name. */
 	@FXML private Label player2name;
+	
+	/** The player 3 name. */
 	@FXML private Label player3name;
+	
+	/** The player 4 name. */
 	@FXML private Label player4name;
+	
+	/** The player 1 score. */
 	@FXML private Label player1score;
+	
+	/** The player 2 score. */
 	@FXML private Label player2score;
+	
+	/** The player 3 score. */
 	@FXML private Label player3score;
+	
+	/** The player 4 score. */
 	@FXML private Label player4score;
+	
+	/** The player 1 tab. */
 	@FXML private Tab player1tab;
+	
+	/** The player 2 tab. */
 	@FXML private Tab player2tab;
+	
+	/** The player 3 tab. */
 	@FXML private Tab player3tab;
+	
+	/** The player 4 tab. */
 	@FXML private Tab player4tab;
+	
+	/** The player up lbl. */
 	@FXML private Text playerUpLbl;
+	
+	/** The roll button. */
 	@FXML private Button rollButton;
+	
+	/** The rounds lbl. */
 	@FXML private Text roundsLbl;
+	
+	/** The sixes P 1. */
 	@FXML private CheckBox sixesP1;
+	
+	/** The sixes P 2. */
 	@FXML private CheckBox sixesP2;
+	
+	/** The sixes P 3. */
 	@FXML private CheckBox sixesP3;
+	
+	/** The sixes P 4. */
 	@FXML private CheckBox sixesP4;
+	
+	/** The sm str P 1. */
 	@FXML private CheckBox smStrP1;
+	
+	/** The sm str P 2. */
 	@FXML private CheckBox smStrP2;
+	
+	/** The sm str P 3. */
 	@FXML private CheckBox smStrP3;
+	
+	/** The sm str P 4. */
 	@FXML private CheckBox smStrP4;
+	
+	/** The threes P 1. */
 	@FXML private CheckBox threesP1;
+	
+	/** The threes P 2. */
 	@FXML private CheckBox threesP2;
+	
+	/** The threes P 3. */
 	@FXML private CheckBox threesP3;
+	
+	/** The threes P 4. */
 	@FXML private CheckBox threesP4;
+	
+	/** The twos P 1. */
 	@FXML private CheckBox twosP1;
+	
+	/** The twos P 2. */
 	@FXML private CheckBox twosP2;
+	
+	/** The twos P 3. */
 	@FXML private CheckBox twosP3;
+	
+	/** The twos P 4. */
 	@FXML private CheckBox twosP4;
+	
+	/** The yahtzee 1 P 1. */
 	@FXML private CheckBox yahtzee1P1;
+	
+	/** The yahtzee 1 P 2. */
 	@FXML private CheckBox yahtzee1P2;
+	
+	/** The yahtzee 1 P 3. */
 	@FXML private CheckBox yahtzee1P3;
+	
+	/** The yahtzee 1 P 4. */
 	@FXML private CheckBox yahtzee1P4;
+	
+	/** The yahtzee 2 P 1. */
 	@FXML private CheckBox yahtzee2P1;
+	
+	/** The yahtzee 2 P 2. */
 	@FXML private CheckBox yahtzee2P2;
+	
+	/** The yahtzee 2 P 3. */
 	@FXML private CheckBox yahtzee2P3;
+	
+	/** The yahtzee 2 P 4. */
 	@FXML private CheckBox yahtzee2P4;
+	
+	/** The yahtzee 3 P 1. */
 	@FXML private CheckBox yahtzee3P1;
+	
+	/** The yahtzee 3 P 2. */
 	@FXML private CheckBox yahtzee3P2;
+	
+	/** The yahtzee 3 P 3. */
 	@FXML private CheckBox yahtzee3P3;
+	
+	/** The yahtzee 3 P 4. */
 	@FXML private CheckBox yahtzee3P4;
+	
+	/** The yahtzee 4 P 1. */
 	@FXML private CheckBox yahtzee4P1;
+	
+	/** The yahtzee 4 P 2. */
 	@FXML private CheckBox yahtzee4P2;
+	
+	/** The yahtzee 4 P 3. */
 	@FXML private CheckBox yahtzee4P3;
+	
+	/** The yahtzee 4 P 4. */
 	@FXML private CheckBox yahtzee4P4;
+	
+	/** The player tab pane. */
 	@FXML private TabPane playerTabPane;
+	
+	/** The score. */
 	@FXML private Button score; // temp button to simulate scoring
+	
+	/** The round num. */
 	private int roundNum = 0;
+	
+	/** The roll num. */
 	private int rollNum = 3;
+	
+	/** The players. */
 	private Player []players = {
 		Main.player1,
 		Main.player2,
 		Main.player3,
 		Main.player4,
 	};
+	
+	/** The main. */
 	private MainController main;
+	
+	/** The player up. */
 	private int playerUp = 0;
+	
+	/** The die 1. */
 	Die die1 = new Die();
+	
+	/** The die 2. */
 	Die die2 = new Die();
+	
+	/** The die 3. */
 	Die die3 = new Die();
+	
+	/** The die 4. */
 	Die die4 = new Die();
+	
+	/** The die 5. */
 	Die die5 = new Die();
 	
+	/**
+	 * Inits the.
+	 *
+	 * @param mainController the main controller
+	 */
 	public void init(MainController mainController) {
 		main = mainController;	
 	}
 	
- 	public void setP1(String p) {
+ 	/**
+	  * Sets the p1.
+	  *
+	  * @param p the new p1
+	  */
+	 public void setP1(String p) {
 	 	if (p.compareTo(" ")>0) {
 			player1name.setText(p);
 			player1tab.setText(p);	
@@ -149,6 +369,11 @@ public class GamePlayController {
 		}
 	}
 	
+	/**
+	 * Sets the p2.
+	 *
+	 * @param p the new p2
+	 */
 	public void setP2(String p) {
 		if (p.compareTo(" ")>0) {
 			player2name.setText(p);
@@ -167,6 +392,11 @@ public class GamePlayController {
 		}
 	}
 	
+	/**
+	 * Sets the p3.
+	 *
+	 * @param p the new p3
+	 */
 	public void setP3(String p) {
 		if (p.compareTo(" ")>0) {
 			player3name.setText(p);
@@ -185,6 +415,11 @@ public class GamePlayController {
 		}
 	}
 	
+	/**
+	 * Sets the p4.
+	 *
+	 * @param p the new p4
+	 */
 	public void setP4(String p) {
 		if (p.compareTo(" ")>0) {
 			player4name.setText(p);
@@ -203,6 +438,9 @@ public class GamePlayController {
 		}
 	}
 
+	/**
+	 * New game.
+	 */
 	public void newGame(){
 		playerUp = 0;
 		roundNum = 0;
@@ -238,20 +476,35 @@ public class GamePlayController {
 		}
 	}
 	
+	/**
+	 * Lock roll button.
+	 */
 	private void lockRollButton(){
 		rollButton.setDisable(true);
 	}
 	
+	/**
+	 * Unlock roll button.
+	 */
 	private void unlockRollButton(){
 		rollButton.setDisable(false);
 	}
 	
+	/**
+	 * Unlock score button.
+	 */
 	private void unlockScoreButton(){
 		score.setDisable(false);
 	}
 		
 	
 	
+	/**
+	 * Roll button click.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	private void rollButtonClick(ActionEvent event) throws IOException{
 		if(rollNum == 3){
@@ -265,6 +518,9 @@ public class GamePlayController {
 		checkRolls();
 	}
 	
+	/**
+	 * Check rolls.
+	 */
 	private void checkRolls(){
 		rollNum--;
 		if (rollNum == 0){
@@ -277,6 +533,9 @@ public class GamePlayController {
 		}
 	}
 	
+	/**
+	 * Check player.
+	 */
 	private void checkPlayer(){	
 		if (playerUp < 4){
 			if(players[playerUp].isValid()){
@@ -297,6 +556,12 @@ public class GamePlayController {
 		}
 	}
 	
+	/**
+	 * Select score click.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	private void selectScoreClick(ActionEvent event) throws IOException{
 		selectScore();
@@ -308,6 +573,9 @@ public class GamePlayController {
 		resetLocks();
 	}
 	
+	/**
+	 * Select score.
+	 */
 	private void selectScore(){
 		System.out.println("This is when player would select score");
 		System.out.println("Die show: "+die1.getSide()+":"+die2.getSide() +":"+die3.getSide()+":"+die4.getSide()+":"+die5.getSide());
@@ -318,6 +586,9 @@ public class GamePlayController {
 //		}
 	}
 	
+	/**
+	 * Sets the die 1.
+	 */
 	private void setDie1(){
 		die1.setSide();
 	
@@ -351,6 +622,9 @@ public class GamePlayController {
 		}
 	}
 
+	/**
+	 * Sets the die 2.
+	 */
 	private void setDie2(){
 		die2.setSide();
 		
@@ -384,6 +658,9 @@ public class GamePlayController {
 		}
 	}
 	
+	/**
+	 * Sets the die 3.
+	 */
 	private void setDie3(){
 		die3.setSide();
 		
@@ -417,6 +694,9 @@ public class GamePlayController {
 		}
 	}
 	
+	/**
+	 * Sets the die 4.
+	 */
 	private void setDie4(){
 		die4.setSide();
 		
@@ -450,6 +730,9 @@ public class GamePlayController {
 		}
 	}
 	
+	/**
+	 * Sets the die 5.
+	 */
 	private void setDie5(){
 		die5.setSide();
 		
@@ -483,6 +766,9 @@ public class GamePlayController {
 		}
 	}
 	
+	/**
+	 * Lock die 1.
+	 */
 	@FXML
 	private void lockDie1() {
 		if (die1.isRoll()){
@@ -494,6 +780,9 @@ public class GamePlayController {
 		}
 	}
 	
+	/**
+	 * Lock die 2.
+	 */
 	@FXML
 	private void lockDie2() {
 		if (die2.isRoll()){
@@ -505,6 +794,9 @@ public class GamePlayController {
 		}
 	}
 	
+	/**
+	 * Lock die 3.
+	 */
 	@FXML
 	private void lockDie3() {
 		if (die3.isRoll()){
@@ -516,6 +808,9 @@ public class GamePlayController {
 		}
 	}
 	
+	/**
+	 * Lock die 4.
+	 */
 	@FXML
 	private void lockDie4() {
 		if (die4.isRoll()){
@@ -527,6 +822,9 @@ public class GamePlayController {
 		}
 	}
 	
+	/**
+	 * Lock die 5.
+	 */
 	@FXML
 	private void lockDie5() {
 		if (die5.isRoll()){
@@ -538,6 +836,9 @@ public class GamePlayController {
 		}
 	}
 	
+	/**
+	 * Reset locks.
+	 */
 	public void resetLocks(){
 		die1.setRoll(true);
 		lockButton1.setText("LOCK");
