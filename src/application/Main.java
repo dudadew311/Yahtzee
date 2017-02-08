@@ -34,11 +34,7 @@ public class Main extends Application {
 		}
 	}
 	
-//	public static void setGamePlay() throws IOException{
-//		Parent root = FXMLLoader.load(Main.class.getResource("/view/Pages/GamePlay.fxml"));
-//		Scene scene = new Scene(root);
-//		primaryStage.setScene(scene);
-//	}
+
 	public static void main(String[] args) {
 		launch(args);
 	}
