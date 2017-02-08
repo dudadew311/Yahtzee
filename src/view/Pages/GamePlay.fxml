@@ -99,9 +99,9 @@
                            <children>
                               <HBox layoutX="133.0" layoutY="77.0" prefHeight="366.0" prefWidth="564.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <ImageView fitHeight="368.0" fitWidth="213.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="upperScore" fitHeight="368.0" fitWidth="213.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../../bin/UpperSectionScore.png" />
+                                          <Image url="@../../images/UpperSectionScore.png" />
                                        </image>
                                     </ImageView>
                                     <VBox prefHeight="254.0" prefWidth="69.0">
@@ -117,7 +117,7 @@
                                     </VBox>
                                     <ImageView fitHeight="368.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../../bin/LowerSectionScore.png" />
+                                          <Image url="@../../images/LowerSectionScore.png" />
                                        </image>
                                     </ImageView>
                                     <VBox prefHeight="366.0" prefWidth="82.0">
@@ -157,7 +157,7 @@
                                  <children>
                                     <ImageView fitHeight="367.0" fitWidth="235.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../../bin/UpperSectionScore.png" />
+                                          <Image url="@../../images/UpperSectionScore.png" />
                                        </image>
                                     </ImageView>
                                     <VBox prefHeight="254.0" prefWidth="69.0">
@@ -173,7 +173,7 @@
                                     </VBox>
                                     <ImageView fitHeight="366.0" fitWidth="221.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../../bin/LowerSectionScore.png" />
+                                          <Image url="@../../images/LowerSectionScore.png" />
                                        </image>
                                     </ImageView>
                                     <VBox prefHeight="254.0" prefWidth="73.0">
@@ -213,7 +213,7 @@
                                  <children>
                                     <ImageView fitHeight="370.0" fitWidth="211.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../../bin/UpperSectionScore.png" />
+                                          <Image url="@../../images/UpperSectionScore.png" />
                                        </image>
                                     </ImageView>
                                     <VBox prefHeight="366.0" prefWidth="73.0">
@@ -229,7 +229,7 @@
                                     </VBox>
                                     <ImageView fitHeight="370.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../../bin/LowerSectionScore.png" />
+                                          <Image url="@../../images/LowerSectionScore.png" />
                                        </image>
                                     </ImageView>
                                     <VBox>
@@ -269,7 +269,7 @@
                                  <children>
                                     <ImageView fitHeight="426.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../../bin/UpperSectionScore.png" />
+                                          <Image url="@../../images/UpperSectionScore.png" />
                                        </image>
                                     </ImageView>
                                     <VBox prefHeight="254.0" prefWidth="69.0">
@@ -285,7 +285,7 @@
                                     </VBox>
                                     <ImageView fitHeight="369.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../../bin/LowerSectionScore.png" />
+                                          <Image url="@../../images/LowerSectionScore.png" />
                                        </image>
                                     </ImageView>
                                     <VBox prefHeight="254.0" prefWidth="73.0">
