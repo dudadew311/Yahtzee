@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package controllers.pages;
 
 /**
@@ -23,6 +26,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class GamePlayController.
  */
@@ -66,6 +70,8 @@ public class GamePlayController {
 	
 	/** The die V 5. */
 	@FXML private ImageView dieV5;
+	
+	private Image []dieV = new Image[5];
 	
 	/** The fives P 1. */
 	@FXML private CheckBox fivesP1;
@@ -336,7 +342,7 @@ public class GamePlayController {
 	/** The die 5. */
 	private Die die5 = new Die();
 	
-	
+	private Die []dice = {die1,die2,die3,die4,die5};
 	
 	/** The die 1 pic. */
 	private Image die1pic = new Image("/images/Die1.png");
@@ -355,6 +361,11 @@ public class GamePlayController {
 	
 	/** The die 6 pic. */
 	private Image die6pic = new Image("/images/Die6.png");
+	
+	/** The die sides. */
+	private int []dieSides = new int[5];
+	
+	private boolean []posibleSelections = new boolean[16];
 	
 	/**
 	 * Initializes the Main controller.
@@ -384,8 +395,7 @@ public class GamePlayController {
 			player1tab.setDisable(true);
 			player1score.setText("");
 			players[0].setValid(false);
-			System.out.println("nothing");
-			
+			System.out.println("nothing");		
 		}
 	}
 	
@@ -517,11 +527,8 @@ public class GamePlayController {
 	 * Unlock score button.
 	 */
 	private void unlockScoreButton(){
-		score.setDisable(false);
-		
+		score.setDisable(false);	
 	}
-		
-	
 	
 	/**
 	 * Roll button click.
@@ -530,20 +537,21 @@ public class GamePlayController {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
-	private void rollButtonClick(ActionEvent event) throws IOException{
+	private void rollButtonClick() {
 		if(rollNum == 3){
-			resetLocks();
+//			resetLocks();
 		}
-		setDie1();
-		setDie2();
-		setDie3();
-		setDie4();
-		setDie5();
+		setDice();
+//		setDie2();
+//		setDie3();
+//		setDie4();
+//		setDie5();
 		checkRolls();
 	}
 	
 	/**
-	 * Check rolls.
+	 * Check to see how many rolls are left 
+	 * and locks the roll button if none are left.
 	 */
 	private void checkRolls(){
 		rollNum--;
@@ -559,7 +567,7 @@ public class GamePlayController {
 	}
 	
 	/**
-	 * Check player.
+	 * Check who is the next player.
 	 */
 	private void checkPlayer(){	
 		if (playerUp < 4){
@@ -582,172 +590,48 @@ public class GamePlayController {
 	}
 	
 	/**
-	 * Select score click.
-	 *
-	 * @param event the event
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	@FXML
-	private void selectScoreClick(ActionEvent event) throws IOException{
-		selectScore();
-		rollNum = 3;
-		rollButton.setText("ROLL\n"+ String.valueOf(rollNum) + " Left");
-		++playerUp;	
-		checkPlayer();
-		rollButton.setDisable(false);
-		resetLocks();
-	}
-	
-	/**
-	 * Select score.
-	 */
-	private void selectScore(){
-		System.out.println("This is when player would select score");
-		System.out.println("Die show: "+die1.getSide()+":"+die2.getSide() +":"+die3.getSide()+":"+die4.getSide()+":"+die5.getSide());
-
-	}
-	
-	/**
 	 * Sets the die 1.
 	 */
-	private void setDie1(){
-		die1.setSide();
-
-			switch(die1.getSide()){
-			case 1:
-				dieV1.setImage(die1pic);
-				break;
-			case 2:
-				dieV1.setImage(die2pic);
-				break;
-			case 3:
-				dieV1.setImage(die3pic);
-				break;
-			case 4:
-				dieV1.setImage(die4pic);
-				break;
-			case 5:
-				dieV1.setImage(die5pic);
-				break;
-			case 6:
-				dieV1.setImage(die6pic);
-				break;
-			}
-	}
-
-	/**
-	 * Sets the die 2.
-	 */
-	private void setDie2(){
-		
-			die2.setSide();
+	private void setDice(){
+		for(int i=0;i<dice.length;i++){
 			
-			
-			switch(die2.getSide()){
+			try {
+				dice[i].setSide();
+			} catch (Exception e) {
+				System.out.println("roll button at 604 set dice");
+				e.printStackTrace();
+			}
+			dieSides[i] = dice[i].getSide();
+			switch (dice[i].getSide()) {
 			case 1:
-				dieV2.setImage(die1pic);
+				dieV[i] = die1pic;
 				break;
 			case 2:
-				dieV2.setImage(die2pic);
+				dieV[i] = die2pic;
 				break;
 			case 3:
-				dieV2.setImage(die3pic);
+				dieV[i] = die3pic;
 				break;
 			case 4:
-				dieV2.setImage(die4pic);
+				dieV[i] = die4pic;
 				break;
 			case 5:
-				dieV2.setImage(die5pic);
+				dieV[i] = die5pic;
 				break;
 			case 6:
-				dieV2.setImage(die6pic);
+				dieV[i] = die6pic;
 				break;
 			}
+		}	
+		dicePictureSet();
 	}
 	
-	/**
-	 * Sets the die 3.
-	 */
-	private void setDie3(){
-		die3.setSide();
-
-			switch(die3.getSide()){
-			case 1:
-				dieV3.setImage(die1pic);
-				break;
-			case 2:
-				dieV3.setImage(die2pic);
-				break;
-			case 3:
-				dieV3.setImage(die3pic);
-				break;
-			case 4:
-				dieV3.setImage(die4pic);
-				break;
-			case 5:
-				dieV3.setImage(die5pic);
-				break;
-			case 6:
-				dieV3.setImage(die6pic);
-				break;
-			}
-	}
-	
-	/**
-	 * Sets the die 4.
-	 */
-	private void setDie4(){
-		die4.setSide();
-
-			switch(die4.getSide()){
-			case 1:
-				dieV4.setImage(die1pic);
-				break;
-			case 2:
-				dieV4.setImage(die2pic);
-				break;
-			case 3:
-				dieV4.setImage(die3pic);
-				break;
-			case 4:
-				dieV4.setImage(die4pic);
-				break;
-			case 5:
-				dieV4.setImage(die5pic);
-				break;
-			case 6:
-				dieV4.setImage(die6pic);
-				break;
-			}
-	}
-	
-	/**
-	 * Sets the die 5.
-	 */
-	private void setDie5(){
-		die5.setSide();
-
-			switch(die5.getSide()){
-			case 1:
-				dieV5.setImage(die1pic);
-				break;
-			case 2:
-				dieV5.setImage(die2pic);
-				break;
-			case 3:
-				dieV5.setImage(die3pic);
-				break;
-			case 4:
-				dieV5.setImage(die4pic);
-				break;
-			case 5:
-				dieV5.setImage(die5pic);
-				break;
-			case 6:
-				dieV5.setImage(die6pic);
-				break;
-			}
-
+	private void dicePictureSet(){	
+			dieV1.setImage(dieV[0]);
+			dieV2.setImage(dieV[1]);
+			dieV3.setImage(dieV[2]);
+			dieV4.setImage(dieV[3]);
+			dieV5.setImage(dieV[4]);
 	}
 	
 	/**
@@ -755,11 +639,11 @@ public class GamePlayController {
 	 */
 	@FXML
 	private void lockDie1() {
-		if (die1.isRoll()){
-			die1.setRoll(false);
+		if (dice[0].isRoll()){
+			dice[0].setRoll(false);
 			lockButton1.setText("Locked");
 		} else {
-			die1.setRoll(true);
+			dice[0].setRoll(true);
 			lockButton1.setText("LOCK");
 		}
 	}
@@ -769,11 +653,11 @@ public class GamePlayController {
 	 */
 	@FXML
 	private void lockDie2() {
-		if (die2.isRoll()){
-			die2.setRoll(false);
+		if (dice[1].isRoll()){
+			dice[1].setRoll(false);
 			lockButton2.setText("Locked");
 		} else {
-			die2.setRoll(true);
+			dice[1].setRoll(true);
 			lockButton2.setText("LOCK");
 		}
 	}
@@ -783,11 +667,11 @@ public class GamePlayController {
 	 */
 	@FXML
 	private void lockDie3() {
-		if (die3.isRoll()){
-			die3.setRoll(false);
+		if (dice[2].isRoll()){
+			dice[2].setRoll(false);
 			lockButton3.setText("Locked");
 		} else {
-			die3.setRoll(true);
+			dice[2].setRoll(true);
 			lockButton3.setText("LOCK");
 		}
 	}
@@ -797,11 +681,11 @@ public class GamePlayController {
 	 */
 	@FXML
 	private void lockDie4() {
-		if (die4.isRoll()){
-			die4.setRoll(false);
+		if (dice[3].isRoll()){
+			dice[3].setRoll(false);
 			lockButton4.setText("Locked");
 		} else {
-			die4.setRoll(true);
+			dice[3].setRoll(true);
 			lockButton4.setText("LOCK");
 		}
 	}
@@ -811,11 +695,11 @@ public class GamePlayController {
 	 */
 	@FXML
 	private void lockDie5() {
-		if (die5.isRoll()){
-			die5.setRoll(false);
+		if (dice[4].isRoll()){
+			dice[4].setRoll(false);
 			lockButton5.setText("Locked");
 		} else {
-			die5.setRoll(true);
+			dice[4].setRoll(true);
 			lockButton5.setText("LOCK");
 		}
 	}
@@ -839,6 +723,141 @@ public class GamePlayController {
 		die5.setRoll(true);
 		lockButton5.setText("LOCK");
 		lockButton5.setSelected(false);
+	}
+	
+	/**
+	 * Select score click.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@FXML
+	private void scoreButtonClick(ActionEvent event) {
+		selectScore();
+		rollNum = 3;
+		rollButton.setText("ROLL\n"+ String.valueOf(rollNum) + " Left");
+		++playerUp;	
+		checkPlayer();
+		rollButton.setDisable(false);
+		resetLocks();
+	}
+	
+	/**
+	 * Select score.
+	 */
+	private void selectScore(){
+		System.out.println("This is when player would select score");
+		System.out.print("Die show: ");
+		for(int i=0;i<5;i++){
+			System.out.print(dice[i].getSide() + ";");
+		}
+	}
+	/**
+	 * Can the this roll be scored in Aces?
+	 *
+	 * @param dieSides the die sides
+	 * @return true, if successful
+	 */
+	private static boolean aces(int[] dieSides){
+		int count = 0;
+		for(int i=0;i<dieSides.length;i++){
+			if (dieSides[i] == 1) count++;
+		}
+		if (count > 0){
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	/**
+	 * Can the this roll be scored in Twos?
+	 *
+	 * @param dieSides the die sides
+	 * @return true, if successful
+	 */
+	private static boolean twos(int[] dieSides){
+		int count = 0;
+		for(int i=0;i<dieSides.length;i++){
+			if (dieSides[i] == 2) count++;
+		}
+		if (count > 0){
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	/**
+	 * Can this roll be scored in Threes?
+	 *
+	 * @param dieSides the die sides
+	 * @return true, if successful
+	 */
+	private static boolean threes(int[] dieSides){
+		int count = 0;
+		for(int i=0;i<dieSides.length;i++){
+			if (dieSides[i] == 3) count++;
+		}
+		if (count > 0){
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	/**
+	 * Can this roll be scored in Fours?
+	 *
+	 * @param dieSides the die sides
+	 * @return true, if successful
+	 */
+	private static boolean fours(int[] dieSides){
+		int count = 0;
+		for(int i=0;i<dieSides.length;i++){
+			if (dieSides[i] == 4) count++;
+		}
+		if (count > 0){
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	/**
+	 * Can this roll be scored in Fives?
+	 *
+	 * @param dieSides the die sides
+	 * @return true, if successful
+	 */
+	private static boolean fives(int[] dieSides){
+		int count = 0;
+		for(int i=0;i<dieSides.length;i++){
+			if (dieSides[i] == 5) count++;
+		}
+		if (count > 0){
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	/**
+	 * Can this roll be scored in Sixes?
+	 *
+	 * @param dieSides the die sides
+	 * @return true, if successful
+	 */
+	private static boolean sixes(int[] dieSides){
+		int count = 0;
+		for(int i=0;i<dieSides.length;i++){
+			if (dieSides[i] == 6) count++;
+		}
+		if (count > 0){
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
 

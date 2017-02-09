@@ -50,7 +50,7 @@ public class PlayerSelectController {
 	 * @param event the event
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	@FXML private void startButtonClick(ActionEvent event) throws IOException{
+	@FXML private void startButtonClick() {
 		System.out.println("Button is clicked");
 		
 		Main.player1.setName(player1input.getText());

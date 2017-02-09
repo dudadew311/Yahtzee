@@ -59,7 +59,7 @@ public class Die {
 	 * Sets the side.
 	 */
 	public void setSide() {
-		if(roll){
+		if(this.roll){
 			this.side = (int)(Math.random() * 6) + 1;
 		}
 	}

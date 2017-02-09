@@ -49,7 +49,7 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
-			e.printStackTrace();
+			System.out.println("at the load there is an error");
 		}
 	}
 	
