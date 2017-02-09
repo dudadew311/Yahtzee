@@ -9,7 +9,7 @@ import java.io.IOException;
 
 import application.Die;
 import application.Main;
-import application.Player;
+import application.ScoreCard;
 import controllers.MainController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,7 +23,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class GamePlayController.
  */
@@ -309,7 +308,7 @@ public class GamePlayController {
 	private int rollNum = 3;
 	
 	/** The players. */
-	private Player []players = {
+	private ScoreCard []players = {
 		Main.player1,
 		Main.player2,
 		Main.player3,
@@ -323,19 +322,19 @@ public class GamePlayController {
 	private int playerUp = 0;
 	
 	/** The die 1. */
-	Die die1 = new Die();
+	private Die die1 = new Die();
 	
 	/** The die 2. */
-	Die die2 = new Die();
+	private Die die2 = new Die();
 	
 	/** The die 3. */
-	Die die3 = new Die();
+	private Die die3 = new Die();
 	
 	/** The die 4. */
-	Die die4 = new Die();
+	private Die die4 = new Die();
 	
 	/** The die 5. */
-	Die die5 = new Die();
+	private Die die5 = new Die();
 	
 	
 	
@@ -363,7 +362,7 @@ public class GamePlayController {
 	 * @param mainController the main controller
 	 */
 	public void init(MainController mainController) {
-		main = mainController;	
+		this.main = mainController;	
 	}
 	
  	/**
@@ -519,6 +518,7 @@ public class GamePlayController {
 	 */
 	private void unlockScoreButton(){
 		score.setDisable(false);
+		
 	}
 		
 	
@@ -555,6 +555,7 @@ public class GamePlayController {
 		rollButton.setText("ROLL\n"+ String.valueOf(rollNum) + " Left");
 		System.out.println(players[playerUp].getName() +" Rolls Left " + rollNum);
 		}
+		
 	}
 	
 	/**
@@ -603,11 +604,7 @@ public class GamePlayController {
 	private void selectScore(){
 		System.out.println("This is when player would select score");
 		System.out.println("Die show: "+die1.getSide()+":"+die2.getSide() +":"+die3.getSide()+":"+die4.getSide()+":"+die5.getSide());
-//		try {
-//		    Thread.sleep(5000);
-//		} catch(InterruptedException ex) {
-//		    Thread.currentThread().interrupt();
-//		}
+
 	}
 	
 	/**
@@ -642,7 +639,7 @@ public class GamePlayController {
 	 * Sets the die 2.
 	 */
 	private void setDie2(){
-		try {
+		
 			die2.setSide();
 			
 			
@@ -666,10 +663,6 @@ public class GamePlayController {
 				dieV2.setImage(die6pic);
 				break;
 			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 	/**

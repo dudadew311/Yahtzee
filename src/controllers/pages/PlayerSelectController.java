@@ -8,17 +8,13 @@ package controllers.pages;
 import java.io.IOException;
 
 import application.Main;
-import controllers.*;
+import controllers.MainController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.Labeled;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class PlayerSelectController.
  */
@@ -85,4 +81,5 @@ public class PlayerSelectController {
 	public void init(MainController mainController) {
 		main = mainController;
 	}
+	
 }

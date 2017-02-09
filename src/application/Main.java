@@ -5,39 +5,33 @@
 
 package application;
 	
-import java.io.IOException;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 
 
-// TODO: Auto-generated Javadoc
+
 /**
  * The Class Main.
  */
 public class Main extends Application {
 	
 	/** The primary stage. */
-	private static Stage primaryStage;
-	
-	/** The main layout. */
-	private static BorderPane mainLayout;
+	private Stage primaryStage;
 	
 	/** The player 1. */
-	public static Player player1 = new Player();
+	public static ScoreCard player1 = new ScoreCard();
 	
 	/** The player 2. */
-	public static Player player2 = new Player();
+	public static ScoreCard player2 = new ScoreCard();
 	
 	/** The player 3. */
-	public static Player player3 = new Player();
+	public static ScoreCard player3 = new ScoreCard();
 	
 	/** The player 4. */
-	public static Player player4 = new Player();
+	public static ScoreCard player4 = new ScoreCard();
 	
 	/* (non-Javadoc)
 	 * @see javafx.application.Application#start(javafx.stage.Stage)
