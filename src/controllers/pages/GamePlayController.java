@@ -577,7 +577,7 @@ public class GamePlayController {
 			playerUp = 0;
 			roundsLbl.setText(String.valueOf(++roundNum + 1));
 			playerUpLbl.setText(players[playerUp].getName());
-			
+			playerTabPane.getSelectionModel().select(playerUp);
 		}
 	}
 	
