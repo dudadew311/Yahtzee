@@ -1,20 +1,15 @@
-/*
- * 
- */
 package controllers.pages;
 
 /**
- * @author 	Raul Diaz <dudadewe311@gmail.com>
+ * @author 	Raul Diaz <dudadew311@gmail.com>
  * @date 	Created on: Feb 8, 2017
  */
 
 import java.io.IOException;
 
 import application.Die;
-import application.Main;
 import application.ScoreCard;
 import controllers.MainController;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -22,7 +17,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
@@ -31,6 +25,8 @@ import javafx.scene.text.Text;
  * The Class GamePlayController.
  */
 public class GamePlayController {
+	
+	
 
 	/** The aces P 1. */
 	@FXML private CheckBox acesP1;
@@ -70,8 +66,6 @@ public class GamePlayController {
 	
 	/** The die V 5. */
 	@FXML private ImageView dieV5;
-	
-	private Image []dieV = new Image[5];
 	
 	/** The fives P 1. */
 	@FXML private CheckBox fivesP1;
@@ -307,26 +301,6 @@ public class GamePlayController {
 	/** The score. */
 	@FXML private Button score; // temp button to simulate scoring
 	
-	/** The round num. */
-	private int roundNum = 0;
-	
-	/** The roll num. */
-	private int rollNum = 3;
-	
-	/** The players. */
-	private ScoreCard []players = {
-		Main.player1,
-		Main.player2,
-		Main.player3,
-		Main.player4,
-	};
-	
-	/** The main. */
-	private MainController main;
-	
-	/** The player up. */
-	private int playerUp = 0;
-	
 	/** The die 1. */
 	private Die die1 = new Die();
 	
@@ -342,167 +316,127 @@ public class GamePlayController {
 	/** The die 5. */
 	private Die die5 = new Die();
 	
-	private Die []dice = {die1,die2,die3,die4,die5};
+	private Die []dice = {
+			die1,
+			die2,
+			die3,
+			die4,
+			die5
+	};
 	
-	/** The die 1 pic. */
-	private Image die1pic = new Image("/images/Die1.png");
+	private ImageView[] diePicture;
 	
-	/** The die 2 pic. */
-	private Image die2pic = new Image("/images/Die2.png");
+	/** The player name array. */
+	public Label []playerName;
 	
-	/** The die 3 pic. */
-	private Image die3pic = new Image("/images/Die3.png");
+	/** The player tab array. */
+	public Tab []playerTab;
 	
-	/** The die 4 pic. */
-	private Image die4pic = new Image("/images/Die4.png");
+	/** The lock button array. */
+	public ToggleButton []locks;
 	
-	/** The die 5 pic. */
-	private Image die5pic = new Image("/images/Die5.png");
+	/** The round num. */
+	private int roundNum = 0;
 	
-	/** The die 6 pic. */
-	private Image die6pic = new Image("/images/Die6.png");
+	/** The roll num. */
+	private int rollNum = 3;
 	
-	/** The die sides. */
-	private int []dieSides = new int[5];
+	/** The players. */
+	private ScoreCard []players = {
+		MainController.player1,
+		MainController.player2,
+		MainController.player3,
+		MainController.player4,
+	};
 	
-	private boolean []posibleSelections = new boolean[16];
+	/** The main. */
+	@SuppressWarnings("unused")
+	private MainController main;
+	
+	/** The player up. */
+	private int playerUp = 0;
 	
 	/**
-	 * Initializes the Main controller.
+	 * Inits the player names.
+	 */
+	public void initPlayerName(){
+		playerName = new Label[4];
+		playerName[0] = player1name;
+		playerName[1] = player2name;
+		playerName[2] = player3name;
+		playerName[3] = player4name;
+		playerTab = new Tab[4];
+		playerTab[0] = player1tab;
+		playerTab[1] = player2tab;
+		playerTab[2] = player3tab;
+		playerTab[3] = player4tab;
+		locks = new ToggleButton[5];
+		locks[0] = lockButton1;
+		locks[1] = lockButton2;
+		locks[2] = lockButton3;
+		locks[3] = lockButton4;
+		locks[4] = lockButton5;
+		diePicture = new ImageView[5];
+		diePicture[0] = dieV1;
+		diePicture[1] = dieV2;
+		diePicture[2] = dieV3;
+		diePicture[3] = dieV4;
+		diePicture[4] = dieV5;
+	}
+	
+	/**
+	 * Sets the names on score card.
+	 */
+	public void setNames() {
+		initPlayerName();
+		for (int i=0;i<playerName.length;i++){
+			if (players[i].getName().compareTo(" ")>0) {
+				playerName[i].setText(players[i].getName());
+				playerTab[i].setText(players[i].getName());
+				playerTab[i].setDisable(false);
+				players[i].setValid(true);
+			} else {
+				playerName[i].setText("");
+				playerTab[i].setText("");
+				playerTab[i].setDisable(true);
+				players[i].setValid(false);
+			}
+		}
+	}
+
+	/**
+	 * Initializes the main controller if needed.
 	 *
 	 * @param mainController the main controller
 	 */
 	public void init(MainController mainController) {
 		this.main = mainController;	
+		
 	}
 	
- 	/**
-	  * Checks to see if player 1 was entered
-	  * If true, Sets up the player.
-	  *
-	  * @param p the new p1
-	  */
-	 public void setP1(String p) {
-	 	if (p.compareTo(" ")>0) {
-			player1name.setText(p);
-			player1tab.setText(p);	
-			player1tab.setDisable(false);
-			players[0].setValid(true);
-			System.out.println("something");
-		} else {
-			player1name.setText("");
-			player1tab.setText("");
-			player1tab.setDisable(true);
-			player1score.setText("");
-			players[0].setValid(false);
-			System.out.println("nothing");		
-		}
-	}
-	
-	/**
-	 * Checks to see if player 2 was entered
-	 * If true, Sets up the player.
-	 *
-	 * @param p the new p2
-	 */
-	public void setP2(String p) {
-		if (p.compareTo(" ")>0) {
-			player2name.setText(p);
-			player2tab.setText(p);	
-			player2tab.setDisable(false);
-			players[1].setValid(true);
-			System.out.println("something");
-		} else {
-			player2name.setText("");
-			player2tab.setText("");
-			player2tab.setDisable(true);
-			player2score.setText("");
-			players[1].setValid(false);
-			System.out.println("nothing");
-			
-		}
-	}
-	
-	/**
-	 * Checks to see if player 3 was entered
-	 * If true, Sets up the player.
-	 *
-	 * @param p the new p3
-	 */
-	public void setP3(String p) {
-		if (p.compareTo(" ")>0) {
-			player3name.setText(p);
-			player3tab.setText(p);	
-			player3tab.setDisable(false);
-			players[2].setValid(true);
-			System.out.println("something");
-		} else {
-			player3name.setText("");
-			player3tab.setText("");
-			player3tab.setDisable(true);
-			player3score.setText("");
-			players[2].setValid(false);
-			System.out.println("nothing");
-			
-		}
-	}
-	
-	/**
-	 * Checks to see if player 4 was entered
-	 * If true, Sets up the player.
-	 *
-	 * @param p the new p4
-	 */
-	public void setP4(String p) {
-		if (p.compareTo(" ")>0) {
-			player4name.setText(p);
-			player4tab.setText(p);	
-			player4tab.setDisable(false);
-			players[3].setValid(true);
-			System.out.println("something");
-		} else {
-			player4name.setText("");
-			player4tab.setText("");
-			player4tab.setDisable(true);
-			player4score.setText("");
-			players[3].setValid(false);
-			System.out.println("nothing");
-			
-		}
-	}
-
 	/**
 	 * Sets up a New game.
+	 * Cleans the board.
 	 */
 	public void newGame(){
 		playerUp = 0;
 		roundNum = 0;
 		rollNum = 3;
+		int flag = 0;
 		rollButton.setText("ROLL\n"+ String.valueOf(rollNum) + " Left");
 		roundsLbl.setText(String.valueOf(roundNum+1));
-		
-		
-		if(players[0].isValid()){
-			playerUpLbl.setText(players[0].getName());
-			playerTabPane.getSelectionModel().select(0);
-			unlockRollButton();
-			unlockScoreButton();
-		} else if(players[1].isValid()){
-			playerUpLbl.setText(players[1].getName());
-			playerTabPane.getSelectionModel().select(1);
-			unlockRollButton();
-			unlockScoreButton();
-		} else if(players[2].isValid()){
-			playerUpLbl.setText(players[2].getName());
-			playerTabPane.getSelectionModel().select(2);
-			unlockRollButton();
-			unlockScoreButton();
-		} else if(players[3].isValid()){
-			playerUpLbl.setText(players[3].getName());
-			playerTabPane.getSelectionModel().select(3);
-			unlockRollButton();
-			unlockScoreButton();
-		} else {
+
+		for(int i=0;i<players.length;i++){
+			if(players[i].isValid()){
+				playerUpLbl.setText(players[i].getName());
+				playerTabPane.getSelectionModel().select(i);
+				unlockRollButton();
+				unlockScoreButton();
+				flag++;
+				break;
+			}
+		}
+		if (flag == 0){
 			playerUpLbl.setText("No one");
 			System.out.println("No one is up");
 			lockRollButton();
@@ -515,19 +449,102 @@ public class GamePlayController {
 	private void lockRollButton(){
 		rollButton.setDisable(true);
 	}
-	
+		
 	/**
 	 * Unlock roll button.
 	 */
 	private void unlockRollButton(){
 		rollButton.setDisable(false);
 	}
-	
+
 	/**
 	 * Unlock score button.
 	 */
 	private void unlockScoreButton(){
-		score.setDisable(false);	
+		score.setDisable(false);
+
+	}
+	
+	/**
+	 * Locks die 1.
+	 */
+	@FXML
+	private void lockDie1() {
+		if (die1.isRollable()){
+			die1.setRollable(false);
+			lockButton1.setText("Locked");
+		} else {
+			die1.setRollable(true);
+			lockButton1.setText("LOCK");
+		}
+	}
+	
+	/**
+	 * Locks die 2.
+	 */
+	@FXML
+	private void lockDie2() {
+		if (die2.isRollable()){
+			die2.setRollable(false);
+			lockButton2.setText("Locked");
+		} else {
+			die2.setRollable(true);
+			lockButton2.setText("LOCK");
+		}
+	}
+	
+	/**
+	 * Locks die 3.
+	 */
+	@FXML
+	private void lockDie3() {
+		if (die3.isRollable()){
+			die3.setRollable(false);
+			lockButton3.setText("Locked");
+		} else {
+			die3.setRollable(true);
+			lockButton3.setText("LOCK");
+		}
+	}
+	
+	/**
+	 * Lock die 4.
+	 */
+	@FXML
+	private void lockDie4() {
+		if (die4.isRollable()){
+			die4.setRollable(false);
+			lockButton4.setText("Locked");
+		} else {
+			die4.setRollable(true);
+			lockButton4.setText("LOCK");
+		}
+	}
+	
+	/**
+	 * Lock die 5.
+	 */
+	@FXML
+	private void lockDie5() {
+		if (die5.isRollable()){
+			die5.setRollable(false);
+			lockButton5.setText("Locked");
+		} else {
+			die5.setRollable(true);
+			lockButton5.setText("LOCK");
+		}
+	}
+	
+	/**
+	 * Reset locks.
+	 */
+	public void resetLocks(){
+		for(int i=0;i<dice.length;i++){
+			dice[i].setRollable(true);			
+			locks[i].setText("LOCK");
+			locks[i].setSelected(false);
+		}
+
 	}
 	
 	/**
@@ -539,19 +556,17 @@ public class GamePlayController {
 	@FXML
 	private void rollButtonClick() {
 		if(rollNum == 3){
-//			resetLocks();
+			resetLocks();
 		}
-		setDice();
-//		setDie2();
-//		setDie3();
-//		setDie4();
-//		setDie5();
+		for(int i=0;i<dice.length;i++){
+			dice[i].setSide();
+			diePicture[i].setImage(dice[i].getDiePicture());
+		}
 		checkRolls();
 	}
 	
 	/**
-	 * Check to see how many rolls are left 
-	 * and locks the roll button if none are left.
+	 * Check rolls.
 	 */
 	private void checkRolls(){
 		rollNum--;
@@ -562,12 +577,11 @@ public class GamePlayController {
 		} else {
 		rollButton.setText("ROLL\n"+ String.valueOf(rollNum) + " Left");
 		System.out.println(players[playerUp].getName() +" Rolls Left " + rollNum);
-		}
-		
+		}	
 	}
 	
 	/**
-	 * Check who is the next player.
+	 * Check player.
 	 */
 	private void checkPlayer(){	
 		if (playerUp < 4){
@@ -590,149 +604,13 @@ public class GamePlayController {
 	}
 	
 	/**
-	 * Sets the die 1.
-	 */
-	private void setDice(){
-		for(int i=0;i<dice.length;i++){
-			
-			try {
-				dice[i].setSide();
-			} catch (Exception e) {
-				System.out.println("roll button at 604 set dice");
-				e.printStackTrace();
-			}
-			dieSides[i] = dice[i].getSide();
-			switch (dice[i].getSide()) {
-			case 1:
-				dieV[i] = die1pic;
-				break;
-			case 2:
-				dieV[i] = die2pic;
-				break;
-			case 3:
-				dieV[i] = die3pic;
-				break;
-			case 4:
-				dieV[i] = die4pic;
-				break;
-			case 5:
-				dieV[i] = die5pic;
-				break;
-			case 6:
-				dieV[i] = die6pic;
-				break;
-			}
-		}	
-		dicePictureSet();
-	}
-	
-	private void dicePictureSet(){	
-			dieV1.setImage(dieV[0]);
-			dieV2.setImage(dieV[1]);
-			dieV3.setImage(dieV[2]);
-			dieV4.setImage(dieV[3]);
-			dieV5.setImage(dieV[4]);
-	}
-	
-	/**
-	 * Locks die 1.
-	 */
-	@FXML
-	private void lockDie1() {
-		if (dice[0].isRoll()){
-			dice[0].setRoll(false);
-			lockButton1.setText("Locked");
-		} else {
-			dice[0].setRoll(true);
-			lockButton1.setText("LOCK");
-		}
-	}
-	
-	/**
-	 * Locks die 2.
-	 */
-	@FXML
-	private void lockDie2() {
-		if (dice[1].isRoll()){
-			dice[1].setRoll(false);
-			lockButton2.setText("Locked");
-		} else {
-			dice[1].setRoll(true);
-			lockButton2.setText("LOCK");
-		}
-	}
-	
-	/**
-	 * Locks die 3.
-	 */
-	@FXML
-	private void lockDie3() {
-		if (dice[2].isRoll()){
-			dice[2].setRoll(false);
-			lockButton3.setText("Locked");
-		} else {
-			dice[2].setRoll(true);
-			lockButton3.setText("LOCK");
-		}
-	}
-	
-	/**
-	 * Lock die 4.
-	 */
-	@FXML
-	private void lockDie4() {
-		if (dice[3].isRoll()){
-			dice[3].setRoll(false);
-			lockButton4.setText("Locked");
-		} else {
-			dice[3].setRoll(true);
-			lockButton4.setText("LOCK");
-		}
-	}
-	
-	/**
-	 * Lock die 5.
-	 */
-	@FXML
-	private void lockDie5() {
-		if (dice[4].isRoll()){
-			dice[4].setRoll(false);
-			lockButton5.setText("Locked");
-		} else {
-			dice[4].setRoll(true);
-			lockButton5.setText("LOCK");
-		}
-	}
-	
-	/**
-	 * Reset locks.
-	 */
-	public void resetLocks(){
-		die1.setRoll(true);
-		lockButton1.setText("LOCK");
-		lockButton1.setSelected(false);
-		die2.setRoll(true);
-		lockButton2.setText("LOCK");
-		lockButton2.setSelected(false);
-		die3.setRoll(true);
-		lockButton3.setText("LOCK");
-		lockButton3.setSelected(false);
-		die4.setRoll(true);
-		lockButton4.setText("LOCK");
-		lockButton4.setSelected(false);
-		die5.setRoll(true);
-		lockButton5.setText("LOCK");
-		lockButton5.setSelected(false);
-	}
-	
-	/**
 	 * Select score click.
 	 *
 	 * @param event the event
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
-	private void scoreButtonClick(ActionEvent event) {
+	private void selectScoreClick() {
 		selectScore();
 		rollNum = 3;
 		rollButton.setText("ROLL\n"+ String.valueOf(rollNum) + " Left");
@@ -747,117 +625,8 @@ public class GamePlayController {
 	 */
 	private void selectScore(){
 		System.out.println("This is when player would select score");
-		System.out.print("Die show: ");
-		for(int i=0;i<5;i++){
-			System.out.print(dice[i].getSide() + ";");
-		}
-	}
-	/**
-	 * Can the this roll be scored in Aces?
-	 *
-	 * @param dieSides the die sides
-	 * @return true, if successful
-	 */
-	private static boolean aces(int[] dieSides){
-		int count = 0;
-		for(int i=0;i<dieSides.length;i++){
-			if (dieSides[i] == 1) count++;
-		}
-		if (count > 0){
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
-	/**
-	 * Can the this roll be scored in Twos?
-	 *
-	 * @param dieSides the die sides
-	 * @return true, if successful
-	 */
-	private static boolean twos(int[] dieSides){
-		int count = 0;
-		for(int i=0;i<dieSides.length;i++){
-			if (dieSides[i] == 2) count++;
-		}
-		if (count > 0){
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
-	/**
-	 * Can this roll be scored in Threes?
-	 *
-	 * @param dieSides the die sides
-	 * @return true, if successful
-	 */
-	private static boolean threes(int[] dieSides){
-		int count = 0;
-		for(int i=0;i<dieSides.length;i++){
-			if (dieSides[i] == 3) count++;
-		}
-		if (count > 0){
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
-	/**
-	 * Can this roll be scored in Fours?
-	 *
-	 * @param dieSides the die sides
-	 * @return true, if successful
-	 */
-	private static boolean fours(int[] dieSides){
-		int count = 0;
-		for(int i=0;i<dieSides.length;i++){
-			if (dieSides[i] == 4) count++;
-		}
-		if (count > 0){
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
-	/**
-	 * Can this roll be scored in Fives?
-	 *
-	 * @param dieSides the die sides
-	 * @return true, if successful
-	 */
-	private static boolean fives(int[] dieSides){
-		int count = 0;
-		for(int i=0;i<dieSides.length;i++){
-			if (dieSides[i] == 5) count++;
-		}
-		if (count > 0){
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
-	/**
-	 * Can this roll be scored in Sixes?
-	 *
-	 * @param dieSides the die sides
-	 * @return true, if successful
-	 */
-	private static boolean sixes(int[] dieSides){
-		int count = 0;
-		for(int i=0;i<dieSides.length;i++){
-			if (dieSides[i] == 6) count++;
-		}
-		if (count > 0){
-			return true;
-		} else {
-			return false;
-		}
+		System.out.println("Die show: "+die1.getSide()+":"+die2.getSide() +":"+die3.getSide()+":"+die4.getSide()+":"+die5.getSide());
+
 	}
 }
 

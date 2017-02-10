@@ -3,7 +3,7 @@
 package application;
 
 /**
- * @author 	Raul Diaz <dudadewe311@gmail.com>
+ * @author 	Raul Diaz <dudadew311@gmail.com>
  * @date 	Created on: Feb 8, 2017
  */
 // TODO: Auto-generated Javadoc

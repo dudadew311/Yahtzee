@@ -1,12 +1,12 @@
 /**
- * @author 	Raul Diaz <dudadewe311@gmail.com>
+ * @author 	Raul Diaz <dudadew311@gmail.com>
  * @date 	Created on: Feb 8, 2017
  */
 package application;
 
 import javafx.scene.image.Image;
 
-// TODO: Auto-generated Javadoc
+
 /**
  * The Class Die.
  */
@@ -21,7 +21,7 @@ public class Die {
 	 */
 	private boolean rollable;
 	
-	private Image diePicture;
+	private Image diePicture = null;
 	
 	/**
 	 * Instantiates a new die.
@@ -66,7 +66,7 @@ public class Die {
 	public void setSide() {
 		if(rollable){
 			this.side = (int)(Math.random() * 6) + 1;
-			diePicture = setDiePicture(side);
+			diePicture = setDiePicture(this.side);
 		}
 	}
 	
@@ -90,19 +90,19 @@ public class Die {
 				picture = new Image("/images/Die1.png");
 				break;
 			case 2:
-				picture = new Image("/images/Die1.png");
+				picture = new Image("/images/Die2.png");
 				break;
 			case 3:
-				picture = new Image("/images/Die1.png");
+				picture = new Image("/images/Die3.png");
 				break;
 			case 4:
-				picture = new Image("/images/Die1.png");
+				picture = new Image("/images/Die4.png");
 				break;
 			case 5:
-				picture = new Image("/images/Die1.png");
+				picture = new Image("/images/Die5.png");
 				break;
 			case 6:
-				picture = new Image("/images/Die1.png");
+				picture = new Image("/images/Die6.png");
 				break;
 			}
 		return picture;

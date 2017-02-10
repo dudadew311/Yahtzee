@@ -340,7 +340,7 @@
                </rotationAxis>
             </Text>
             <Region prefHeight="27.0" prefWidth="98.0" />
-            <Button fx:id="score" disable="true" mnemonicParsing="false" onAction="#scoreButtonClick" prefHeight="27.0" prefWidth="89.0" text="Score" />
+            <Button fx:id="score" disable="true" mnemonicParsing="false" onAction="#selectScoreClick" prefHeight="27.0" prefWidth="89.0" text="Score" />
             <Region prefHeight="27.0" prefWidth="150.0" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Round: ">
                <font>

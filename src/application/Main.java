@@ -1,5 +1,5 @@
 /**
- * @author 	Raul Diaz <dudadewe311@gmail.com>
+ * @author 	Raul Diaz <dudadew311@gmail.com>
  * @date 	Created on: Feb 8, 2017
  */
 
@@ -21,18 +21,6 @@ public class Main extends Application {
 	/** The primary stage. */
 	private Stage primaryStage;
 	
-	/** The player 1. */
-	public static ScoreCard player1 = new ScoreCard();
-	
-	/** The player 2. */
-	public static ScoreCard player2 = new ScoreCard();
-	
-	/** The player 3. */
-	public static ScoreCard player3 = new ScoreCard();
-	
-	/** The player 4. */
-	public static ScoreCard player4 = new ScoreCard();
-	
 	/* (non-Javadoc)
 	 * @see javafx.application.Application#start(javafx.stage.Stage)
 	 */
@@ -49,7 +37,8 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
-			System.out.println("at the load there is an error");
+			System.out.println("problem at the Main.fxml Loader");
+			e.printStackTrace();
 		}
 	}
 	

@@ -7,7 +7,6 @@ package controllers.pages;
 
 import java.io.IOException;
 
-import application.Main;
 import controllers.MainController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,19 +43,21 @@ public class PlayerSelectController {
 	/** The anchor pane main. */
 	@FXML private AnchorPane anchorPaneMain;
 	
+
+	
 	/**
 	 * Start button click.
 	 *
 	 * @param event the event
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	@FXML private void startButtonClick() {
+	@FXML private void startButtonClick(ActionEvent event) throws IOException{
 		System.out.println("Button is clicked");
 		
-		Main.player1.setName(player1input.getText());
-		Main.player2.setName(player2input.getText());
-		Main.player3.setName(player3input.getText());
-		Main.player4.setName(player4input.getText());
+		MainController.player1.setName(player1input.getText());
+		MainController.player2.setName(player2input.getText());
+		MainController.player3.setName(player3input.getText());
+		MainController.player4.setName(player4input.getText());
 		
 		changeNames();
 		

@@ -1,13 +1,11 @@
-/**
- * 
- */
+
 package application;
 
-// TODO: Auto-generated Javadoc
+
 /**
  * The Class ScoreCard. keeps track of each players score card.
  *
- * @author 	Raul Diaz <dudadewe311@gmail.com>
+ * @author 	Raul Diaz <dudadew311@gmail.com>
  * @date 	Created on: Feb 8, 2017
  */
 public class ScoreCard extends Player{
