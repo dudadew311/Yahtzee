@@ -45,7 +45,7 @@ public class MainController {
 		System.out.println("Game Started");
 		playerSelectController.init(this);
 		gamePlayController.init(this);
-		gamePlayController.initPlayerName();
+		gamePlayController.initiateArrays();
 		
 	}
 
