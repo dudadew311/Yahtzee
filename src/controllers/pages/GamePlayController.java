@@ -279,6 +279,9 @@ public class GamePlayController {
 		rollNum--;
 		if (rollNum == 0){
 			lockRollButton();
+			for(int i=0;i<rollResult.length;i++){
+				rollResult[i] = dice[i].getSide();
+			}
 			selectScore();
 			rollButton.setText("ROLL\n"+ String.valueOf(rollNum) + " Left");
 			System.out.println(players[playerUp].getName() +" Rolls Left " + rollNum);
@@ -286,6 +289,7 @@ public class GamePlayController {
 			rollButton.setText("ROLL\n"+ String.valueOf(rollNum) + " Left");
 			System.out.println(players[playerUp].getName() +" Rolls Left " + rollNum);
 		}	
+		
 	}
 
 	/**
@@ -321,7 +325,7 @@ public class GamePlayController {
 	private void selectScoreClick() {
 		lockPossibles();
 		System.out.println("things should lcok here");
-		selectScore();
+//		selectScore();
 		rollNum = 3;
 		rollButton.setText("ROLL\n"+ String.valueOf(rollNum) + " Left");
 		++playerUp;	
@@ -420,10 +424,19 @@ public class GamePlayController {
 	}
 	
 	private static boolean is3oK(int[] roll) {
-		int count = 0;
-		//need to figure out 
-		
-		if(count > 3){
+		int count = 0, highestCount = 0;
+		for(int i=0;i<(roll.length);i++){
+			for(int j=0;j<(roll.length);j++){
+				if (roll[i] == roll[j]){
+					count++;
+				}
+			}
+			if (count >= highestCount){
+				highestCount = count;
+			}
+			count = 0;
+		}
+		if(highestCount >= 3){
 			return true;
 		} else {
 			return false;
@@ -431,10 +444,20 @@ public class GamePlayController {
 	}
 	
 	private static boolean is4oK(int[] roll) {
-		int count = 0;
-		//need to figure out
-		
-		if(count > 4){
+		int count = 0, highestCount = 0;
+		for(int i=0;i<(roll.length);i++){
+			for (int j = 0; j < (roll.length); j++) {
+				if (roll[i] == roll[j]){
+					count++;
+				}
+			}
+			if (count >= highestCount){
+				highestCount = count;
+				
+			}
+			count =0;
+		}
+		if(highestCount >= 4){
 			return true;
 		} else {
 			return false;
@@ -442,10 +465,19 @@ public class GamePlayController {
 	}
 	
 	private static boolean isFullHouse(int[] roll) {
-		int count = 0;
-		// nee to figure out
-		
-		if(count > 0){
+		int count1 = 0, count2 = 0;
+		Arrays.sort(roll);
+		for(int i=0;i<roll.length;i++){
+			if(roll[i] == roll[0]){
+				count1++;
+			}
+		}
+		for(int i=0;i<roll.length;i++){
+			if(roll[i] == roll[4]){
+				count2++;
+			}
+		}
+		if(((count1 == 2) && (count2 == 3)) || ((count1 == 3) && (count2 == 2))){
 			return true;
 		} else {
 			return false;
@@ -460,7 +492,7 @@ public class GamePlayController {
 				count++;
 			}
 		}
-		if(count > 3){
+		if(count > 2){
 			return true;
 		} else {
 			return false;
@@ -475,7 +507,7 @@ public class GamePlayController {
 				count++;
 			}
 		}
-		if(count > 4){
+		if(count > 3){
 			return true;
 		} else {
 			return false;
@@ -497,22 +529,22 @@ public class GamePlayController {
 	}
 	
 	private void unlockPossibles() {
-		scoreCard[playerUp][0].setDisable(isAces(rollResult));
-		scoreCard[playerUp][1].setDisable(isTwos(rollResult));
-		scoreCard[playerUp][2].setDisable(isThrees(rollResult));
-		scoreCard[playerUp][3].setDisable(isFours(rollResult));
-		scoreCard[playerUp][4].setDisable(isFives(rollResult));
-		scoreCard[playerUp][5].setDisable(isSixes(rollResult));
-		scoreCard[playerUp][6].setDisable(is3oK(rollResult));
-		scoreCard[playerUp][7].setDisable(is4oK(rollResult));
-		scoreCard[playerUp][8].setDisable(isFullHouse(rollResult));
-		scoreCard[playerUp][9].setDisable(isSmStr(rollResult));
-		scoreCard[playerUp][10].setDisable(isLrgStr(rollResult));
-		scoreCard[playerUp][11].setDisable(isYahtzee(rollResult));
-		scoreCard[playerUp][12].setDisable(true);
-		scoreCard[playerUp][13].setDisable(isYahtzee(rollResult));
-		scoreCard[playerUp][14].setDisable(isYahtzee(rollResult));
-		scoreCard[playerUp][15].setDisable(isYahtzee(rollResult));
+		scoreCard[playerUp][0].setDisable(!isAces(rollResult));
+		scoreCard[playerUp][1].setDisable(!isTwos(rollResult));
+		scoreCard[playerUp][2].setDisable(!isThrees(rollResult));
+		scoreCard[playerUp][3].setDisable(!isFours(rollResult));
+		scoreCard[playerUp][4].setDisable(!isFives(rollResult));
+		scoreCard[playerUp][5].setDisable(!isSixes(rollResult));
+		scoreCard[playerUp][6].setDisable(!is3oK(rollResult));
+		scoreCard[playerUp][7].setDisable(!is4oK(rollResult));
+		scoreCard[playerUp][8].setDisable(!isFullHouse(rollResult));
+		scoreCard[playerUp][9].setDisable(!isSmStr(rollResult));
+		scoreCard[playerUp][10].setDisable(!isLrgStr(rollResult));
+		scoreCard[playerUp][11].setDisable(!isYahtzee(rollResult));
+		scoreCard[playerUp][12].setDisable(false);
+		scoreCard[playerUp][13].setDisable(!isYahtzee(rollResult));
+		scoreCard[playerUp][14].setDisable(!isYahtzee(rollResult));
+		scoreCard[playerUp][15].setDisable(!isYahtzee(rollResult));
 		
 	}
 	
