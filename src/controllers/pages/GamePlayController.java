@@ -1,11 +1,5 @@
 package controllers.pages;
 
-/**
- * @author 	Raul Diaz <dudadew311@gmail.com>
- * @date 	Created on: Feb 8, 2017
- */
-
-import java.io.IOException;
 import java.util.Arrays;
 
 import application.Die;
@@ -20,6 +14,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+
 
 /**
  * The Class GamePlayController.
@@ -41,10 +36,13 @@ public class GamePlayController {
 	/** The die 5. */
 	private Die die5 = new Die();
 
+	/** The dice. */
 	private Die []dice = {die1,die2,die3,die4,die5};
 
+	/** The score card. */
 	private CheckBox[][] scoreCard;
 
+	/** The die picture. */
 	private ImageView[] diePicture;
 
 	/** The player name array. */
@@ -63,6 +61,7 @@ public class GamePlayController {
 	private int rollNum = 3;
 
 	
+	/** The roll result. */
 	private int[] rollResult = {
 			die1.getSide(),
 			die2.getSide(),
@@ -71,15 +70,12 @@ public class GamePlayController {
 			die5.getSide()
 	};
 	
-	
+	/** The player scores. */
+	private Label[] playerScores;
 
 	/** The players. */
-	private ScoreCard []players = {
-			MainController.player1,
-			MainController.player2,
-			MainController.player3,
-			MainController.player4,
-	};
+	private ScoreCard []players;
+
 
 	/** The main controller. */
 	@SuppressWarnings("unused")
@@ -93,17 +89,34 @@ public class GamePlayController {
 	 */
 	public void setNames() {
 		initiateArrays();
+		for(int i=0;i<players.length;i++){
+			players[i].resetScores();
+		}
+		for(int i=0;i<4;i++){
+			for(int j=0;j<16;j++) {
+			scoreCard[i][j].setText("");
+			scoreCard[i][j].setSelected(false);
+			initiateArrays();
+			}
+			upperScore[i].setText("0");
+			upperBonus[i].setText("0");	
+			upperTotal[i].setText("0");
+			lowUpperScore[i].setText("0");
+			yatzeeBonusScore[i].setText("0");
+			lowerScore[i].setText("0");
+			grandTotal[i].setText("0");
+		}
 		for (int i=0;i<playerName.length;i++){
-			if (players[i].getName().compareTo(" ")>0) {
+			if (players[i].isValid()) {
 				playerName[i].setText(players[i].getName());
+				playerScores[i].setText("0");
 				playerTab[i].setText(players[i].getName());
-				playerTab[i].setDisable(false);
-				players[i].setValid(true);
+				playerTab[i].setDisable(false);	
 			} else {
 				playerName[i].setText("");
+				playerScores[i].setText("");
 				playerTab[i].setText("");
 				playerTab[i].setDisable(true);
-				players[i].setValid(false);
 			}
 		}
 	}
@@ -123,6 +136,7 @@ public class GamePlayController {
 	 * Cleans the board.
 	 */
 	public void newGame(){
+		initiateArrays();
 		playerUp = 0;
 		roundNum = 0;
 		rollNum = 3;
@@ -139,9 +153,7 @@ public class GamePlayController {
 				unlockScoreButton();
 				flag++;
 				break;
-			} else {
-				
-			}
+			} 
 		}
 		if (flag == 0){
 			playerUpLbl.setText("No one");
@@ -168,7 +180,7 @@ public class GamePlayController {
 	 * Unlock score button.
 	 */
 	private void unlockScoreButton(){
-		score.setDisable(false);
+		next.setDisable(false);
 
 	}
 
@@ -256,9 +268,6 @@ public class GamePlayController {
 
 	/**
 	 * Roll button click.
-	 *
-	 * @param event the event
-	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
 	private void rollButtonClick() {
@@ -276,6 +285,7 @@ public class GamePlayController {
 	 * Check rolls.
 	 */
 	private void checkRolls(){
+		playerTabPane.getSelectionModel().select(playerUp);
 		rollNum--;
 		if (rollNum == 0){
 			lockRollButton();
@@ -317,15 +327,37 @@ public class GamePlayController {
 
 	/**
 	 * Select score click.
-	 *
-	 * @param event the event
-	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
 	private void selectScoreClick() {
-		lockPossibles();
-		System.out.println("things should lcok here");
-//		selectScore();
+		for(int i=0;i<playerScores.length;i++){
+			if(players[i].isValid()){
+				playerScores[i].setText(Integer.toString(players[i].getScore()));
+			} else {
+				playerScores[i].setText("");
+			}
+			
+		}
+		upperScore[playerUp].setText(Integer.toString(players[playerUp].getUpperScore()));
+		upperBonus[playerUp].setText(Integer.toString(players[playerUp].getUpperBonus()));	
+		upperTotal[playerUp].setText(Integer.toString(players[playerUp].getUpperTotal()));
+		lowUpperScore[playerUp].setText(Integer.toString(players[playerUp].getUpperTotal()));
+		yatzeeBonusScore[playerUp].setText(Integer.toString(players[playerUp].getYahtzeeBonusScore()));
+		lowerScore[playerUp].setText(Integer.toString(players[playerUp].getLowerScore()));
+		grandTotal[playerUp].setText(Integer.toString(players[playerUp].getScore()));
+		lockPossibles();	
+	}
+	
+	/**
+	 * Next button click.
+	 */
+	@FXML
+	private void nextButtonClick() {
+	
+		for (int i=0;i<dice.length;i++){
+			dice[i].resetDiePicture();
+			diePicture[i].setImage(dice[i].getDiePicture());
+		}	
 		rollNum = 3;
 		rollButton.setText("ROLL\n"+ String.valueOf(rollNum) + " Left");
 		++playerUp;	
@@ -340,13 +372,32 @@ public class GamePlayController {
 	 */
 	private void selectScore(){
 		unlockPossibles();
-		System.out.println("This is when player would select score");
-		System.out.println("Die show: "+die1.getSide()+":"+die2.getSide() +":"+die3.getSide()+":"+die4.getSide()+":"+die5.getSide());
-
 	}
 
+	/**
+	 * Creates the players.
+	 */
+	public void createPlayers(){
+		ScoreCard player1 = new ScoreCard(MainController.player1.getName(), true);
+		ScoreCard player2 = new ScoreCard(MainController.player2.getName(), true);
+		ScoreCard player3 = new ScoreCard(MainController.player3.getName(), true);
+		ScoreCard player4 = new ScoreCard(MainController.player4.getName(), true);
+		players = new ScoreCard[4];
+		players[0] = player1;
+		players[1] = player2;
+		players[2] = player3;
+		players[3] = player4;
+		for(int i=0;i<players.length;i++){
+			players[i].resetScores();
+		}
+	}
 
-
+	/**
+	 * Checks if is aces.
+	 *
+	 * @param roll the roll
+	 * @return true, if is aces
+	 */
 	private static boolean isAces(int[] roll) {
 		int count = 0;
 		for(int i=0;i<roll.length;i++){
@@ -361,6 +412,12 @@ public class GamePlayController {
 		}
 	}
 	
+	/**
+	 * Checks if is twos.
+	 *
+	 * @param roll the roll
+	 * @return true, if is twos
+	 */
 	private static boolean isTwos(int[] roll) {
 		int count = 0;
 		for(int i=0;i<roll.length;i++){
@@ -373,6 +430,12 @@ public class GamePlayController {
 		}
 	}
 	
+	/**
+	 * Checks if is threes.
+	 *
+	 * @param roll the roll
+	 * @return true, if is threes
+	 */
 	private static boolean isThrees(int[] roll) {
 		int count = 0;
 		for(int i=0;i<roll.length;i++){
@@ -387,6 +450,12 @@ public class GamePlayController {
 		}
 	}
 	
+	/**
+	 * Checks if is fours.
+	 *
+	 * @param roll the roll
+	 * @return true, if is fours
+	 */
 	private static boolean isFours(int[] roll) {
 		int count = 0;
 		for(int i=0;i<roll.length;i++){
@@ -399,6 +468,12 @@ public class GamePlayController {
 		}
 	}
 	
+	/**
+	 * Checks if is fives.
+	 *
+	 * @param roll the roll
+	 * @return true, if is fives
+	 */
 	private static boolean isFives(int[] roll) {
 		int count = 0;
 		for(int i=0;i<roll.length;i++){
@@ -411,6 +486,12 @@ public class GamePlayController {
 		}
 	}
 	
+	/**
+	 * Checks if is sixes.
+	 *
+	 * @param roll the roll
+	 * @return true, if is sixes
+	 */
 	private static boolean isSixes(int[] roll) {
 		int count = 0;
 		for(int i=0;i<roll.length;i++){
@@ -423,6 +504,12 @@ public class GamePlayController {
 		}
 	}
 	
+	/**
+	 * Checks if is 3 o K.
+	 *
+	 * @param roll the roll
+	 * @return true, if is 3 o K
+	 */
 	private static boolean is3oK(int[] roll) {
 		int count = 0, highestCount = 0;
 		for(int i=0;i<(roll.length);i++){
@@ -443,6 +530,12 @@ public class GamePlayController {
 		}
 	}
 	
+	/**
+	 * Checks if is 4 o K.
+	 *
+	 * @param roll the roll
+	 * @return true, if is 4 o K
+	 */
 	private static boolean is4oK(int[] roll) {
 		int count = 0, highestCount = 0;
 		for(int i=0;i<(roll.length);i++){
@@ -464,6 +557,12 @@ public class GamePlayController {
 		}
 	}
 	
+	/**
+	 * Checks if is full house.
+	 *
+	 * @param roll the roll
+	 * @return true, if is full house
+	 */
 	private static boolean isFullHouse(int[] roll) {
 		int count1 = 0, count2 = 0;
 		Arrays.sort(roll);
@@ -484,6 +583,12 @@ public class GamePlayController {
 		}
 	}
 	
+	/**
+	 * Checks if is sm str.
+	 *
+	 * @param roll the roll
+	 * @return true, if is sm str
+	 */
 	private static boolean isSmStr(int[] roll) {
 		int count = 0;
 		Arrays.sort(roll);
@@ -499,6 +604,12 @@ public class GamePlayController {
 		}
 	}
 	
+	/**
+	 * Checks if is lrg str.
+	 *
+	 * @param roll the roll
+	 * @return true, if is lrg str
+	 */
 	private static boolean isLrgStr(int[] roll) {
 		int count = 0;
 		Arrays.sort(roll);
@@ -514,6 +625,12 @@ public class GamePlayController {
 		}
 	}
 	
+	/**
+	 * Checks if is yahtzee.
+	 *
+	 * @param roll the roll
+	 * @return true, if is yahtzee
+	 */
 	private static boolean isYahtzee(int[] roll) {
 		int count = 0;
 		for(int i=0;i<roll.length;i++){
@@ -528,33 +645,229 @@ public class GamePlayController {
 		}
 	}
 	
+	/**
+	 * Unlock possibles.
+	 */
 	private void unlockPossibles() {
-		scoreCard[playerUp][0].setDisable(!isAces(rollResult));
-		scoreCard[playerUp][1].setDisable(!isTwos(rollResult));
-		scoreCard[playerUp][2].setDisable(!isThrees(rollResult));
-		scoreCard[playerUp][3].setDisable(!isFours(rollResult));
-		scoreCard[playerUp][4].setDisable(!isFives(rollResult));
-		scoreCard[playerUp][5].setDisable(!isSixes(rollResult));
-		scoreCard[playerUp][6].setDisable(!is3oK(rollResult));
-		scoreCard[playerUp][7].setDisable(!is4oK(rollResult));
-		scoreCard[playerUp][8].setDisable(!isFullHouse(rollResult));
-		scoreCard[playerUp][9].setDisable(!isSmStr(rollResult));
-		scoreCard[playerUp][10].setDisable(!isLrgStr(rollResult));
-		scoreCard[playerUp][11].setDisable(!isYahtzee(rollResult));
-		scoreCard[playerUp][12].setDisable(false);
-		scoreCard[playerUp][13].setDisable(!isYahtzee(rollResult));
-		scoreCard[playerUp][14].setDisable(!isYahtzee(rollResult));
-		scoreCard[playerUp][15].setDisable(!isYahtzee(rollResult));
 		
+		if(isAces(rollResult) && !players[playerUp].isAcesUsed()) {
+			scoreCard[playerUp][0].setDisable(false);
+		}
+		if(isTwos(rollResult) && !players[playerUp].isTwosUsed()) {
+			scoreCard[playerUp][1].setDisable(false);
+		}
+		if(isThrees(rollResult) && !players[playerUp].isThreesUsed()) {
+			scoreCard[playerUp][2].setDisable(false);
+		}
+		if(isFours(rollResult) && !players[playerUp].isFoursUsed()) {
+			scoreCard[playerUp][3].setDisable(false);
+		}
+		if(isFives(rollResult) && !players[playerUp].isFivesUsed()) {
+			scoreCard[playerUp][4].setDisable(false);
+		}
+		if(isSixes(rollResult) && !players[playerUp].isSixesUsed()) {
+			scoreCard[playerUp][5].setDisable(false);
+		}
+		if(is3oK(rollResult) && !players[playerUp].isL3oKUsed()) {
+			scoreCard[playerUp][6].setDisable(false);
+		}
+		if(is4oK(rollResult) && !players[playerUp].isL4oKUsed()) {
+			scoreCard[playerUp][7].setDisable(false);
+		}
+		if(isFullHouse(rollResult) && !players[playerUp].isFullHouseUsed()) {
+			scoreCard[playerUp][8].setDisable(false);
+		}
+		if(isSmStr(rollResult) && !players[playerUp].isSmallStrUsed()) {
+			scoreCard[playerUp][9].setDisable(false);
+		}
+		if(isLrgStr(rollResult) && !players[playerUp].isLrgStrUsed()) {
+			scoreCard[playerUp][10].setDisable(false);
+		}
+		if(isYahtzee(rollResult) && !players[playerUp].isYahtzeeUsed()) {
+			scoreCard[playerUp][11].setDisable(false);
+		}
+		if(!players[playerUp].isChanceUsed()) {
+			scoreCard[playerUp][12].setDisable(false);
+		}
+		if(isYahtzee(rollResult) && !players[playerUp].isYahtzeeBonus1Used()) {
+			scoreCard[playerUp][13].setDisable(false);
+		}
+		if(isYahtzee(rollResult) && !players[playerUp].isYahtzeeBonus2Used()) {
+			scoreCard[playerUp][14].setDisable(false);
+		}
+		if(isYahtzee(rollResult) && !players[playerUp].isYahtzeeBonus3Used()) {
+			scoreCard[playerUp][15].setDisable(false);
+		}
 	}
 	
 	
+	/**
+	 * Lock possibles.
+	 */
 	private void lockPossibles() {
 		for(int i=0;i<4;i++){
-			for(int j=0;j<16;j++)
+			for(int j=0;j<16;j++) {
 			scoreCard[i][j].setDisable(true);
 			initiateArrays();
+			}
 		}
+	}
+	
+	/**
+	 * Aces button click.
+	 */
+	@FXML
+	private void acesButtonClick() {
+		players[playerUp].setAcesScore(rollResult);
+		scoreCard[playerUp][0].setText(Integer.toString(players[playerUp].getAcesScore()));
+		selectScoreClick();
+	}
+	
+	/**
+	 * Twos button click.
+	 */
+	@FXML
+	private void twosButtonClick() {
+		players[playerUp].setTwosScore(rollResult);
+		scoreCard[playerUp][1].setText(Integer.toString(players[playerUp].getTwosScore()));
+		selectScoreClick();
+	}
+	
+	/**
+	 * Threes button click.
+	 */
+	@FXML
+	private void threesButtonClick() {
+		players[playerUp].setThreesScore(rollResult);
+		scoreCard[playerUp][2].setText(Integer.toString(players[playerUp].getThreesScore()));
+		selectScoreClick();
+	}
+	
+	/**
+	 * Fours button click.
+	 */
+	@FXML
+	private void foursButtonClick() {
+		players[playerUp].setFoursScore(rollResult);
+		scoreCard[playerUp][3].setText(Integer.toString(players[playerUp].getFoursScore()));
+		selectScoreClick();
+	}
+	
+	/**
+	 * Fives button click.
+	 */
+	@FXML
+	private void fivesButtonClick() {
+		players[playerUp].setFivesScore(rollResult);
+		scoreCard[playerUp][4].setText(Integer.toString(players[playerUp].getFivesScore()));
+		selectScoreClick();
+	}
+	
+	/**
+	 * Sixes button click.
+	 */
+	@FXML
+	private void sixesButtonClick() {
+		players[playerUp].setSixesScore(rollResult);
+		scoreCard[playerUp][5].setText(Integer.toString(players[playerUp].getSixesScore()));
+		selectScoreClick();
+	}
+	
+	/**
+	 * L 3 o K button click.
+	 */
+	@FXML
+	private void l3oKButtonClick() {
+		players[playerUp].setL3oKScore(rollResult);
+		scoreCard[playerUp][6].setText(Integer.toString(players[playerUp].getL3oKScore()));
+		selectScoreClick();
+	}
+	
+	/**
+	 * L 4 o K button click.
+	 */
+	@FXML
+	private void l4oKButtonClick() {
+		players[playerUp].setL4oKScore(rollResult);
+		scoreCard[playerUp][7].setText(Integer.toString(players[playerUp].getL4oKScore()));
+		selectScoreClick();
+	}
+	
+	/**
+	 * Full house button click.
+	 */
+	@FXML
+	private void fullHouseButtonClick() {
+		players[playerUp].setFullHouseScore();
+		scoreCard[playerUp][8].setText(Integer.toString(players[playerUp].getFullHouseScore()));
+		selectScoreClick();
+	}
+	
+	/**
+	 * Sm str button click.
+	 */
+	@FXML
+	private void smStrButtonClick() {
+		players[playerUp].setSmallStrScore();
+		scoreCard[playerUp][9].setText(Integer.toString(players[playerUp].getSmallStrScore()));
+		selectScoreClick();
+	}
+	
+	/**
+	 * Lrg str button click.
+	 */
+	@FXML
+	private void lrgStrButtonClick() {
+		players[playerUp].setLrgStrScore();
+		scoreCard[playerUp][10].setText(Integer.toString(players[playerUp].getLrgStrScore()));
+		selectScoreClick();
+	}
+	
+	/**
+	 * Yahtzee 1 button click.
+	 */
+	@FXML
+	private void yahtzee1ButtonClick() {
+		players[playerUp].setYahtzeeScore();
+		scoreCard[playerUp][11].setText(Integer.toString(players[playerUp].getYahtzeeScore()));
+		selectScoreClick();
+	}
+	
+	/**
+	 * Chance button click.
+	 */
+	@FXML
+	private void chanceButtonClick() {
+		players[playerUp].setChanceScore(rollResult);
+		scoreCard[playerUp][12].setText(Integer.toString(players[playerUp].getChanceScore()));
+		selectScoreClick();
+	}
+	
+	/**
+	 * Yahtzee 2 button click.
+	 */
+	@FXML
+	private void yahtzee2ButtonClick() {
+		players[playerUp].setYahtzeeBonus1Used(true);
+		selectScoreClick();
+	}
+	
+	/**
+	 * Yahtzee 3 button click.
+	 */
+	@FXML
+	private void yahtzee3ButtonClick() {
+		players[playerUp].setYahtzeeBonus2Used(true);
+		selectScoreClick();
+	}
+	
+	/**
+	 * Yahtzee 4 button click.
+	 */
+	@FXML
+	private void yahtzee4ButtonClick() {
+		players[playerUp].setYahtzeeBonus3Used(true);
+		selectScoreClick();
 	}
 
 	/** The aces P 1. */
@@ -828,17 +1141,162 @@ public class GamePlayController {
 	@FXML private TabPane playerTabPane;
 
 	/** The score. */
-	@FXML private Button score; // temp button to simulate scoring
+	@FXML private Button next; 
+	
+	/** The upper score P 1. */
+	@FXML private Label upperScoreP1;
+	
+	/** The upper score P 2. */
+	@FXML private Label upperScoreP2;
+	
+	/** The upper score P 3. */
+	@FXML private Label upperScoreP3;
+	
+	/** The upper score P 4. */
+	@FXML private Label upperScoreP4;
+	
+	/** The upper score. */
+	private Label[] upperScore;
+	
+	/** The upper bonus P 1. */
+	@FXML private Label upperBonusP1;
+	
+	/** The upper bonus P 2. */
+	@FXML private Label upperBonusP2;
+	
+	/** The upper bonus P 3. */
+	@FXML private Label upperBonusP3;
+	
+	/** The upper bonus P 4. */
+	@FXML private Label upperBonusP4;
+	
+	/** The upper bonus. */
+	private Label[] upperBonus;
+	
+	/** The upper total P 1. */
+	@FXML private Label upperTotalP1;
+	
+	/** The upper total P 2. */
+	@FXML private Label upperTotalP2;
+	
+	/** The upper total P 3. */
+	@FXML private Label upperTotalP3;
+	
+	/** The upper total P 4. */
+	@FXML private Label upperTotalP4;
+	
+	/** The upper total. */
+	private Label[] upperTotal;
+	
+	/** The yatzee bonus score P 1. */
+	@FXML private Label yatzeeBonusScoreP1;
+
+	/** The yatzee bonus score P 2. */
+	@FXML private Label yatzeeBonusScoreP2;
+	
+	/** The yatzee bonus score P 3. */
+	@FXML private Label yatzeeBonusScoreP3;
+	
+	/** The yatzee bonus score P 4. */
+	@FXML private Label yatzeeBonusScoreP4;
+	
+	/** The yatzee bonus score. */
+	private Label[] yatzeeBonusScore;
+	
+	/** The lower score P 1. */
+	@FXML private Label lowerScoreP1;
+	
+	/** The lower score P 2. */
+	@FXML private Label lowerScoreP2;
+	
+	/** The lower score P 3. */
+	@FXML private Label lowerScoreP3;
+	
+	/** The lower score P 4. */
+	@FXML private Label lowerScoreP4;
+	
+	/** The lower score. */
+	private Label[] lowerScore;
+	
+	/** The low upper score P 1. */
+	@FXML private Label lowUpperScoreP1;
+	
+	/** The low upper score P 2. */
+	@FXML private Label lowUpperScoreP2;
+	
+	/** The low upper score P 3. */
+	@FXML private Label lowUpperScoreP3;
+	
+	/** The low upper score P 4. */
+	@FXML private Label lowUpperScoreP4;
+	
+	/** The low upper score. */
+	private Label[] lowUpperScore;
+	
+	/** The grand total P 1. */
+	@FXML private Label grandTotalP1;
+	
+	/** The grand total P 2. */
+	@FXML private Label grandTotalP2;
+	
+	/** The grand total P 3. */
+	@FXML private Label grandTotalP3;
+	
+	/** The grand total P 4. */
+	@FXML private Label grandTotalP4;
+	
+	/** The grand total. */
+	private Label[] grandTotal;
 
 	/**
 	 * Inits the player names.
 	 */
 	public void initiateArrays(){
+		upperScore = new Label[4];
+		upperScore[0] = upperScoreP1;
+		upperScore[1] = upperScoreP2;
+		upperScore[2] = upperScoreP3;
+		upperScore[3] = upperScoreP4;
+		upperBonus = new Label[4];
+		upperBonus[0] = upperBonusP1;
+		upperBonus[1] = upperBonusP2;
+		upperBonus[2] = upperBonusP3;
+		upperBonus[3] = upperBonusP4;
+		upperTotal = new Label[4];
+		upperTotal[0] = upperTotalP1;
+		upperTotal[1] = upperTotalP2;
+		upperTotal[2] = upperTotalP3;
+		upperTotal[3] = upperTotalP4;
+		yatzeeBonusScore = new Label[4];
+		yatzeeBonusScore[0] = yatzeeBonusScoreP1;
+		yatzeeBonusScore[1] = yatzeeBonusScoreP2;
+		yatzeeBonusScore[2] = yatzeeBonusScoreP3;
+		yatzeeBonusScore[3] = yatzeeBonusScoreP4;
+		lowerScore = new Label[4];
+		lowerScore[0] = lowerScoreP1;
+		lowerScore[1] = lowerScoreP2;
+		lowerScore[2] = lowerScoreP3;
+		lowerScore[3] = lowerScoreP4;
+		lowUpperScore = new Label[4];
+		lowUpperScore[0] = lowUpperScoreP1;
+		lowUpperScore[1] = lowUpperScoreP2;
+		lowUpperScore[2] = lowUpperScoreP3;
+		lowUpperScore[3] = lowUpperScoreP4;
+		grandTotal = new Label[4];
+		grandTotal[0] = grandTotalP1;
+		grandTotal[1] = grandTotalP2;
+		grandTotal[2] = grandTotalP3;
+		grandTotal[3] = grandTotalP4;
 		playerName = new Label[4];
 		playerName[0] = player1name;
 		playerName[1] = player2name;
 		playerName[2] = player3name;
 		playerName[3] = player4name;
+		playerScores = new Label[4];
+		playerScores[0] = player1score;
+		playerScores[1] = player2score;
+		playerScores[2] = player3score;
+		playerScores[3] = player4score;
 		playerTab = new Tab[4];
 		playerTab[0] = player1tab;
 		playerTab[1] = player2tab;
@@ -921,6 +1379,7 @@ public class GamePlayController {
 		scoreCard[3][13] = yahtzee2P4;
 		scoreCard[3][14] = yahtzee3P4;
 		scoreCard[3][15] = yahtzee4P4;
+		
 	}
 }
 

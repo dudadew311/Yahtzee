@@ -5,29 +5,28 @@
 
 package controllers;
 
-import application.ScoreCard;
+import application.Player;
 import controllers.pages.GamePlayController;
 import controllers.pages.PlayerSelectController;
 import javafx.fxml.FXML;
 import javafx.scene.control.TabPane;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class MainController.
  */
 public class MainController {
 	
 	/** The player 1. */
-	public static ScoreCard player1 = new ScoreCard();
+	public static Player player1 = new Player();
 	
 	/** The player 2. */
-	public static ScoreCard player2 = new ScoreCard();
+	public static Player player2 = new Player();
 	
 	/** The player 3. */
-	public static ScoreCard player3 = new ScoreCard();
+	public static Player player3 = new Player();
 	
 	/** The player 4. */
-	public static ScoreCard player4 = new ScoreCard();
+	public static Player player4 = new Player();
 	
 	/** The tab pane. */
 	@FXML public TabPane tabPane;
@@ -45,24 +44,24 @@ public class MainController {
 		System.out.println("Game Started");
 		playerSelectController.init(this);
 		gamePlayController.init(this);
-		gamePlayController.initiateArrays();
+		
 		
 	}
+	
+	
 
 	/**
 	 * Sets the players.
 	 */
 	public void setPlayers(){
 		System.out.println("in MainController with " + player1.getName());
+		gamePlayController.createPlayers();
 		gamePlayController.setNames();
+		gamePlayController.initiateArrays();
 		gamePlayController.newGame();
-//		gamePlayController.setP1(player1.getName());
-//		gamePlayController.setP2(player2.getName());
-//		gamePlayController.setP3(player3.getName());
-//		gamePlayController.setP4(player4.getName());
-//		gamePlayController.newGame();
-//		gamePlayController.resetLocks();
-//	
+		
+		
+
 	}
 
 

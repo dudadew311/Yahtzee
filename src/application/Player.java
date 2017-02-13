@@ -6,7 +6,7 @@ package application;
  * @author 	Raul Diaz <dudadew311@gmail.com>
  * @date 	Created on: Feb 8, 2017
  */
-// TODO: Auto-generated Javadoc
+
 /**
  * The Class Player.
  */
@@ -16,7 +16,7 @@ public class Player {
 	private String name;
 	
 	/** The valid. */
-	private boolean valid = true;
+	private boolean valid = false;
 	
 	/** The score. */
 	private int score;
@@ -26,8 +26,12 @@ public class Player {
 	 *
 	 * @param name the name
 	 */
-	public Player(String name){
+	public Player(String name, int score){
 		this.name = name;
+		this.score = score;
+		if(name.compareTo("")>0){
+			this.valid = true;
+		}
 	}
 	
 	/**
@@ -70,7 +74,7 @@ public class Player {
 	 * @param score the new score
 	 */
 	public void setScore(int score) {
-		this.score = score;
+		this.score += score;
 	}
 
 	/**

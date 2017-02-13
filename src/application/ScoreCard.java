@@ -2,6 +2,7 @@
 package application;
 
 
+
 /**
  * The Class ScoreCard. keeps track of each players score card.
  *
@@ -34,6 +35,106 @@ public class ScoreCard extends Player{
 	/** The fours used. */
 	private boolean foursUsed = false;
 	
+	/**
+	 * Gets the fives score.
+	 *
+	 * @return the fives score
+	 */
+	public int getFivesScore() {
+		return fivesScore;
+	}
+
+	/**
+	 * Sets the fives score.
+	 *
+	 * @param roll the new fives score
+	 */
+	public void setFivesScore(int[] roll) {
+		int count = 0;
+		for(int i=0;i<roll.length;i++){
+			if(roll[i] == 5){
+				count++;
+			}
+		}
+		this.fivesScore = count * 5;
+		this.setScore(fivesScore);
+		fivesUsed = true;
+	}
+
+	/**
+	 * Checks if is fives used.
+	 *
+	 * @return true, if is fives used
+	 */
+	public boolean isFivesUsed() {
+		return fivesUsed;
+	}
+
+	/**
+	 * Sets the fives used.
+	 *
+	 * @param fivesUsed the new fives used
+	 */
+	public void setFivesUsed(boolean fivesUsed) {
+		this.fivesUsed = fivesUsed;
+	}
+
+	/**
+	 * Gets the sixes score.
+	 *
+	 * @return the sixes score
+	 */
+	public int getSixesScore() {
+		return sixesScore;
+	}
+
+	/**
+	 * Sets the sixes score.
+	 *
+	 * @param roll the new sixes score
+	 */
+	public void setSixesScore(int[] roll) {
+		int count = 0;
+		for(int i=0;i<roll.length;i++){
+			if(roll[i] == 6){
+				count++;
+			}
+		}
+		this.sixesScore = count * 6;
+		this.setScore(sixesScore);
+		sixesUsed = true;
+	}
+
+	/**
+	 * Checks if is sixes used.
+	 *
+	 * @return true, if is sixes used
+	 */
+	public boolean isSixesUsed() {
+		return sixesUsed;
+	}
+
+	/**
+	 * Sets the sixes used.
+	 *
+	 * @param sixesUsed the new sixes used
+	 */
+	public void setSixesUsed(boolean sixesUsed) {
+		this.sixesUsed = sixesUsed;
+	}
+
+	/** The fives score. */
+	private int fivesScore =  0;
+	
+	/** The fives used. */
+	private boolean fivesUsed = false;
+	
+	/** The sixes score. */
+	private int sixesScore = 0;
+	
+	/** The sixes used. */
+	private boolean sixesUsed = false;
+	
 	/** The l 3 o K score. */
 	private int l3oKScore = 0;
 	
@@ -52,6 +153,75 @@ public class ScoreCard extends Player{
 	/** The full house used. */
 	private boolean fullHouseUsed = false;
 	
+	/** The chance score. */
+	private int chanceScore = 0;
+	
+	/** The chance used. */
+	private boolean chanceUsed = false;
+	
+	/** The yahtzee bonus score. */
+	private int yahtzeeBonusScore = 0;
+	
+	/**
+	 * Gets the yahtzee bonus score.
+	 *
+	 * @return the yahtzee bonus score
+	 */
+	public int getYahtzeeBonusScore() {
+		return yahtzeeBonusScore;
+	}
+
+	/**
+	 * Sets the yahtzee bonus score.
+	 */
+	public void setYahtzeeBonusScore() {
+		this.yahtzeeBonusScore += 100;
+		this.setScore(100);
+	}
+
+	/**
+	 * Gets the chance score.
+	 *
+	 * @return the chance score
+	 */
+	public int getChanceScore() {
+		return chanceScore;
+	}
+
+	/**
+	 * Sets the chance score.
+	 *
+	 * @param roll the new chance score
+	 */
+	public void setChanceScore(int[] roll) {
+		int count = 0;
+		for(int i=0;i<roll.length;i++){
+			count += roll[i];
+		}
+		this.chanceScore = count;
+		this.setScore(chanceScore);
+		this.chanceUsed = true;
+	}
+	
+
+	/**
+	 * Checks if is chance used.
+	 *
+	 * @return true, if is chance used
+	 */
+	public boolean isChanceUsed() {
+		return chanceUsed;
+	}
+
+	/**
+	 * Sets the chance used.
+	 *
+	 * @param chanceUsed the new chance used
+	 */
+	public void setChanceUsed(boolean chanceUsed) {
+		this.chanceUsed = chanceUsed;
+	}
+
 	/** The small str score. */
 	private int smallStrScore = 0;
 	
@@ -81,20 +251,12 @@ public class ScoreCard extends Player{
 	
 	/**
 	 * Instantiates a new score card.
-	 */
-	public ScoreCard() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	/**
-	 * Instantiates a new score card.
 	 *
 	 * @param name the name
+	 * @param valid the valid
 	 */
-	public ScoreCard(String name) {
-		super(name);
-		// TODO Auto-generated constructor stub
+	public ScoreCard(String name, boolean valid) {
+		super(name, 0);
 	}
 	
 	/**
@@ -109,10 +271,18 @@ public class ScoreCard extends Player{
 	/**
 	 * Sets the aces score.
 	 *
-	 * @param acesScore the new aces score
+	 * @param roll the new aces score
 	 */
-	public void setAcesScore(int acesScore) {
-		this.acesScore = acesScore;
+	public void setAcesScore(int[] roll) {
+		int count = 0;
+		for(int i=0;i<roll.length;i++){
+			if(roll[i] == 1){
+				count++;
+			}
+		}
+		this.acesScore = count;
+		this.setScore(acesScore);
+		acesUsed = true;
 	}
 	
 	/**
@@ -145,10 +315,18 @@ public class ScoreCard extends Player{
 	/**
 	 * Sets the twos score.
 	 *
-	 * @param twosScore the new twos score
+	 * @param roll the new twos score
 	 */
-	public void setTwosScore(int twosScore) {
-		this.twosScore = twosScore;
+	public void setTwosScore(int[] roll) {
+		int count = 0;
+		for(int i=0;i<roll.length;i++){
+			if(roll[i] == 2){
+				count++;
+			}
+		}
+		this.twosScore = count * 2;
+		this.setScore(twosScore);
+		twosUsed = true;
 	}
 	
 	/**
@@ -181,10 +359,18 @@ public class ScoreCard extends Player{
 	/**
 	 * Sets the threes score.
 	 *
-	 * @param threesScore the new threes score
+	 * @param roll the new threes score
 	 */
-	public void setThreesScore(int threesScore) {
-		this.threesScore = threesScore;
+	public void setThreesScore(int[] roll) {
+		int count = 0;
+		for(int i=0;i<roll.length;i++){
+			if(roll[i] == 3){
+				count++;
+			}
+		}
+		this.threesScore = count * 3;
+		this.setScore(threesScore);
+		threesUsed = true;
 	}
 	
 	/**
@@ -217,10 +403,18 @@ public class ScoreCard extends Player{
 	/**
 	 * Sets the fours score.
 	 *
-	 * @param foursScore the new fours score
+	 * @param roll the new fours score
 	 */
-	public void setFoursScore(int foursScore) {
-		this.foursScore = foursScore;
+	public void setFoursScore(int[] roll) {
+		int count = 0;
+		for(int i=0;i<roll.length;i++){
+			if(roll[i] == 4){
+				count++;
+			}
+		}
+		this.foursScore = count * 4;
+		this.setScore(foursScore);
+		foursUsed = true;
 	}
 	
 	/**
@@ -253,10 +447,16 @@ public class ScoreCard extends Player{
 	/**
 	 * Sets the l 3 o K score.
 	 *
-	 * @param l3oKScore the new l 3 o K score
+	 * @param roll the new l 3 o K score
 	 */
-	public void setL3oKScore(int l3oKScore) {
-		this.l3oKScore = l3oKScore;
+	public void setL3oKScore(int[] roll) {
+		int count = 0;
+		for(int i=0;i<roll.length;i++){
+			count += roll[i];
+		}
+		this.l3oKScore = count;
+		this.setScore(l3oKScore);
+		this.l3oKUsed = true;
 	}
 	
 	/**
@@ -289,10 +489,16 @@ public class ScoreCard extends Player{
 	/**
 	 * Sets the l 4 o K score.
 	 *
-	 * @param l4oKScore the new l 4 o K score
+	 * @param roll the new l 4 o K score
 	 */
-	public void setL4oKScore(int l4oKScore) {
-		this.l4oKScore = l4oKScore;
+	public void setL4oKScore(int[] roll) {
+		int count = 0;
+		for(int i=0;i<roll.length;i++){
+			count += roll[i];
+		}
+		this.l4oKScore = count;
+		this.setScore(l4oKScore);
+		this.l4oKUsed = true;
 	}
 	
 	/**
@@ -324,11 +530,11 @@ public class ScoreCard extends Player{
 	
 	/**
 	 * Sets the full house score.
-	 *
-	 * @param fullHouseScore the new full house score
 	 */
-	public void setFullHouseScore(int fullHouseScore) {
-		this.fullHouseScore = fullHouseScore;
+	public void setFullHouseScore() {
+		this.fullHouseScore = 25;
+		this.setScore(fullHouseScore);
+		this.fullHouseUsed = true;
 	}
 	
 	/**
@@ -360,11 +566,11 @@ public class ScoreCard extends Player{
 	
 	/**
 	 * Sets the small str score.
-	 *
-	 * @param smallStrScore the new small str score
 	 */
-	public void setSmallStrScore(int smallStrScore) {
-		this.smallStrScore = smallStrScore;
+	public void setSmallStrScore() {
+		this.smallStrScore = 30;
+		this.setScore(smallStrScore);
+		this.smallStrUsed = true;
 	}
 	
 	/**
@@ -396,11 +602,11 @@ public class ScoreCard extends Player{
 	
 	/**
 	 * Sets the lrg str score.
-	 *
-	 * @param lrgStrScore the new lrg str score
 	 */
-	public void setLrgStrScore(int lrgStrScore) {
-		this.lrgStrScore = lrgStrScore;
+	public void setLrgStrScore() {
+		this.lrgStrScore = 40;
+		this.setScore(lrgStrScore);
+		this.lrgStrUsed =  true;
 	}
 	
 	/**
@@ -432,11 +638,11 @@ public class ScoreCard extends Player{
 	
 	/**
 	 * Sets the yahtzee score.
-	 *
-	 * @param yahtzeeScore the new yahtzee score
 	 */
-	public void setYahtzeeScore(int yahtzeeScore) {
-		this.yahtzeeScore = yahtzeeScore;
+	public void setYahtzeeScore() {
+		this.yahtzeeScore = 50;
+		this.setScore(yahtzeeScore);
+		this.yahtzeeUsed = true;
 	}
 	
 	/**
@@ -473,6 +679,8 @@ public class ScoreCard extends Player{
 	 */
 	public void setYahtzeeBonus1Used(boolean yahtzeeBonus1Used) {
 		this.yahtzeeBonus1Used = yahtzeeBonus1Used;
+		setYahtzeeBonusScore();
+		
 	}
 	
 	/**
@@ -491,6 +699,7 @@ public class ScoreCard extends Player{
 	 */
 	public void setYahtzeeBonus2Used(boolean yahtzeeBonus2Used) {
 		this.yahtzeeBonus2Used = yahtzeeBonus2Used;
+		setYahtzeeBonusScore();
 	}
 	
 	/**
@@ -509,8 +718,82 @@ public class ScoreCard extends Player{
 	 */
 	public void setYahtzeeBonus3Used(boolean yahtzeeBonus3Used) {
 		this.yahtzeeBonus3Used = yahtzeeBonus3Used;
+		setYahtzeeBonusScore();
 	}
 	
+	/**
+	 * Reset scores.
+	 */
+	public void resetScores() {
+		acesScore = 0;
+		twosScore = 0;
+		threesScore = 0;
+		foursScore = 0;
+		fivesScore = 0;
+		sixesScore = 0;
+		l3oKScore = 0;
+		l4oKScore = 0;
+		fullHouseScore = 0;
+		smallStrScore = 0;
+		lrgStrScore = 0;
+		yahtzeeScore = 0;
+		chanceScore = 0;
+		yahtzeeBonusScore = 0;
+		super.setScore(0);
+		acesUsed = false;
+		twosUsed = false;
+		threesUsed = false;
+		foursUsed = false;
+		fivesUsed = false;
+		sixesUsed = false;
+		l3oKUsed = false;
+		l4oKUsed = false;
+		fullHouseUsed = false;
+		smallStrUsed = false;
+		lrgStrUsed = false;
+		yahtzeeUsed = false;
+		yahtzeeBonus1Used = false;
+		yahtzeeBonus2Used = false;
+		yahtzeeBonus3Used = false;
+	}
 	
-
+	/**
+	 * Gets the upper score.
+	 *
+	 * @return the upper score
+	 */
+	public int getUpperScore() {
+		return acesScore + twosScore + threesScore + foursScore + fivesScore + sixesScore;
+	}
+	
+	/**
+	 * Gets the upper bonus.
+	 *
+	 * @return the upper bonus
+	 */
+	public int getUpperBonus() {
+		if(getUpperScore() >= 63) {
+			return 35;
+		} else {
+			return 0;
+		}
+	}
+	
+	/**
+	 * Gets the upper total.
+	 *
+	 * @return the upper total
+	 */
+	public int getUpperTotal() {
+		return getUpperScore() + getUpperBonus();
+	}
+	
+	/**
+	 * Gets the lower score.
+	 *
+	 * @return the lower score
+	 */
+	public int getLowerScore () {
+		return l3oKScore + l4oKScore + fullHouseScore + smallStrScore + lrgStrScore + yahtzeeScore + chanceScore + yahtzeeBonusScore;
+	}
 }

@@ -21,6 +21,7 @@ public class Die {
 	 */
 	private boolean rollable;
 	
+	/** The die picture. */
 	private Image diePicture = null;
 	
 	/**
@@ -81,6 +82,9 @@ public class Die {
 
 	/**
 	 * Sets the die picture that will be displayed for each number.
+	 *
+	 * @param side the side
+	 * @return the image
 	 */
 	private static Image setDiePicture(int side){
 		Image picture = null;
@@ -106,5 +110,12 @@ public class Die {
 				break;
 			}
 		return picture;
+	}
+	
+	/**
+	 * Reset die picture to blank.
+	 */
+	public void resetDiePicture(){
+		this.diePicture = new Image("/images/Blank.png");	
 	}
 }

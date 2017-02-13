@@ -16,6 +16,13 @@
    <bottom>
       <HBox fillHeight="false" prefHeight="74.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
+            <Button fx:id="next" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#nextButtonClick" prefHeight="101.0" prefWidth="80.0" text="Click Here For Next Player" textAlignment="CENTER" wrapText="true">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></Button>
             <Region prefHeight="105.0" prefWidth="25.0" HBox.hgrow="ALWAYS" />
             <Button fx:id="rollButton" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#rollButtonClick" prefHeight="101.0" prefWidth="80.0" text="Roll">
                <HBox.margin>
@@ -99,7 +106,7 @@
                            <children>
                               <HBox layoutX="133.0" layoutY="77.0" prefHeight="366.0" prefWidth="564.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <ImageView fx:id="upperScore" fitHeight="368.0" fitWidth="213.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="370.0" fitWidth="213.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../../images/UpperSectionScore.png" />
                                        </image>
@@ -107,40 +114,47 @@
                                     <VBox prefHeight="254.0" prefWidth="69.0">
                                        <children>
                                           <Region prefHeight="47.0" prefWidth="69.0" />
-                                          <CheckBox fx:id="acesP1" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="35.0" prefWidth="67.0" textAlignment="CENTER" />
-                                          <CheckBox fx:id="twosP1" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="38.0" prefWidth="69.0" textAlignment="CENTER" />
-                                          <CheckBox fx:id="threesP1" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="37.0" prefWidth="69.0" textAlignment="CENTER" />
-                                          <CheckBox fx:id="foursP1" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="39.0" prefWidth="69.0" textAlignment="CENTER" />
-                                          <CheckBox fx:id="fivesP1" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="36.0" prefWidth="69.0" textAlignment="CENTER" />
-                                          <CheckBox fx:id="sixesP1" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="37.0" prefWidth="69.0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="acesP1" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#acesButtonClick" prefHeight="35.0" prefWidth="67.0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="twosP1" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#twosButtonClick" prefHeight="38.0" prefWidth="69.0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="threesP1" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#threesButtonClick" prefHeight="37.0" prefWidth="69.0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="foursP1" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#foursButtonClick" prefHeight="39.0" prefWidth="69.0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="fivesP1" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#fivesButtonClick" prefHeight="36.0" prefWidth="69.0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="sixesP1" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#sixesButtonClick" prefHeight="38.0" prefWidth="67.0" textAlignment="CENTER" />
+                                          <Label fx:id="upperScoreP1" alignment="CENTER" prefHeight="34.0" prefWidth="67.0" />
+                                          <Label fx:id="upperBonusP1" alignment="CENTER" prefHeight="32.0" prefWidth="72.0" textAlignment="CENTER" />
+                                          <Label fx:id="upperTotalP1" alignment="CENTER" prefHeight="31.0" prefWidth="67.0" />
                                        </children>
                                     </VBox>
-                                    <ImageView fitHeight="368.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="370.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../../images/LowerSectionScore.png" />
                                        </image>
                                     </ImageView>
-                                    <VBox prefHeight="366.0" prefWidth="82.0">
+                                    <VBox prefHeight="266.0" prefWidth="79.0">
                                        <children>
                                           <VBox prefHeight="267.0" prefWidth="82.0">
                                              <children>
                                                 <Region prefHeight="26.0" prefWidth="73.0" />
-                                                <CheckBox fx:id="l3oKP1" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="31.0" prefWidth="73.0" textAlignment="CENTER" />
-                                                <CheckBox fx:id="l4oKP1" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="73.0" textAlignment="CENTER" />
-                                                <CheckBox fx:id="fullHouseP1" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="32.0" prefWidth="73.0" textAlignment="CENTER" />
-                                                <CheckBox fx:id="smStrP1" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="32.0" prefWidth="73.0" textAlignment="CENTER" />
-                                                <CheckBox fx:id="lrgStrP1" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="29.0" prefWidth="73.0" textAlignment="CENTER" />
-                                                <CheckBox fx:id="yahtzee1P1" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="32.0" prefWidth="73.0" textAlignment="CENTER" />
-                                                <CheckBox fx:id="chanceP1" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="29.0" prefWidth="73.0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="l3oKP1" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#l3oKButtonClick" prefHeight="31.0" prefWidth="73.0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="l4oKP1" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#l4oKButtonClick" prefHeight="30.0" prefWidth="73.0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="fullHouseP1" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#fullHouseButtonClick" prefHeight="32.0" prefWidth="73.0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="smStrP1" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#smStrButtonClick" prefHeight="32.0" prefWidth="73.0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="lrgStrP1" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#lrgStrButtonClick" prefHeight="29.0" prefWidth="73.0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="yahtzee1P1" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#yahtzee1ButtonClick" prefHeight="32.0" prefWidth="73.0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="chanceP1" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#chanceButtonClick" prefHeight="29.0" prefWidth="73.0" textAlignment="CENTER" />
                                                 <HBox prefHeight="27.0" prefWidth="82.0">
                                                    <children>
-                                                      <CheckBox fx:id="yahtzee2P1" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" disable="true" mnemonicParsing="false" prefHeight="33.0" prefWidth="25.0" textAlignment="CENTER" />
-                                                      <CheckBox fx:id="yahtzee3P1" alignment="CENTER" contentDisplay="BOTTOM" disable="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="25.0" />
-                                                      <CheckBox fx:id="yahtzee4P1" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" disable="true" layoutX="34.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="28.0" />
+                                                      <CheckBox fx:id="yahtzee2P1" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" disable="true" mnemonicParsing="false" onAction="#yahtzee2ButtonClick" prefHeight="33.0" prefWidth="25.0" textAlignment="CENTER" />
+                                                      <CheckBox fx:id="yahtzee3P1" alignment="CENTER" contentDisplay="BOTTOM" disable="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#yahtzee3ButtonClick" prefHeight="27.0" prefWidth="25.0" />
+                                                      <CheckBox fx:id="yahtzee4P1" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" disable="true" layoutX="34.0" layoutY="10.0" mnemonicParsing="false" onAction="#yahtzee4ButtonClick" prefHeight="27.0" prefWidth="28.0" />
                                                    </children>
                                                 </HBox>
                                              </children>
                                           </VBox>
+                                          <Label fx:id="yatzeeBonusScoreP1" alignment="CENTER" prefHeight="25.0" prefWidth="80.0" />
+                                          <Label fx:id="lowerScoreP1" alignment="CENTER" prefHeight="28.0" prefWidth="77.0" />
+                                          <Label fx:id="lowUpperScoreP1" alignment="CENTER" prefHeight="24.0" prefWidth="80.0" />
+                                          <Label fx:id="grandTotalP1" alignment="CENTER" prefHeight="23.0" prefWidth="80.0" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -155,7 +169,7 @@
                            <children>
                               <HBox layoutX="133.0" layoutY="77.0" prefHeight="254.0" prefWidth="492.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <ImageView fitHeight="367.0" fitWidth="235.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="371.0" fitWidth="213.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../../images/UpperSectionScore.png" />
                                        </image>
@@ -163,40 +177,47 @@
                                     <VBox prefHeight="254.0" prefWidth="69.0">
                                        <children>
                                           <Region prefHeight="46.0" prefWidth="69.0" />
-                                          <CheckBox fx:id="acesP2" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="38.0" prefWidth="67.0" textAlignment="CENTER" />
-                                          <CheckBox fx:id="twosP2" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="37.0" prefWidth="69.0" textAlignment="CENTER" />
-                                          <CheckBox fx:id="threesP2" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="38.0" prefWidth="69.0" textAlignment="CENTER" />
-                                          <CheckBox fx:id="foursP2" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="37.0" prefWidth="69.0" textAlignment="CENTER" />
-                                          <CheckBox fx:id="fivesP2" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="38.0" prefWidth="69.0" textAlignment="CENTER" />
-                                          <CheckBox fx:id="sixesP2" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="37.0" prefWidth="69.0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="acesP2" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#acesButtonClick" prefHeight="38.0" prefWidth="67.0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="twosP2" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#twosButtonClick" prefHeight="37.0" prefWidth="69.0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="threesP2" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#threesButtonClick" prefHeight="38.0" prefWidth="69.0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="foursP2" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#foursButtonClick" prefHeight="37.0" prefWidth="69.0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="fivesP2" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#fivesButtonClick" prefHeight="38.0" prefWidth="69.0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="sixesP2" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#sixesButtonClick" prefHeight="37.0" prefWidth="69.0" textAlignment="CENTER" />
+                                          <Label fx:id="upperScoreP2" alignment="CENTER" prefHeight="32.0" prefWidth="72.0" />
+                                          <Label fx:id="upperBonusP2" alignment="CENTER" prefHeight="32.0" prefWidth="72.0" textAlignment="CENTER" />
+                                          <Label fx:id="upperTotalP2" alignment="CENTER" prefHeight="32.0" prefWidth="72.0" />
                                        </children>
                                     </VBox>
-                                    <ImageView fitHeight="366.0" fitWidth="221.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="371.0" fitWidth="211.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../../images/LowerSectionScore.png" />
                                        </image>
                                     </ImageView>
                                     <VBox prefHeight="254.0" prefWidth="73.0">
                                        <children>
-                                          <VBox prefHeight="371.0" prefWidth="73.0">
+                                          <VBox prefHeight="271.0" prefWidth="73.0">
                                              <children>
                                                 <Region prefHeight="26.0" prefWidth="73.0" />
-                                                <CheckBox fx:id="l3oKP2" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="73.0" textAlignment="CENTER" />
-                                                <CheckBox fx:id="l4oKP2" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="32.0" prefWidth="73.0" textAlignment="CENTER" />
-                                                <CheckBox fx:id="fullHouseP2" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="73.0" textAlignment="CENTER" />
-                                                <CheckBox fx:id="smStrP2" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="31.0" prefWidth="73.0" textAlignment="CENTER" />
-                                                <CheckBox fx:id="lrgStrP2" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="32.0" prefWidth="73.0" textAlignment="CENTER" />
-                                                <CheckBox fx:id="yahtzee1P2" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="73.0" textAlignment="CENTER" />
-                                                <CheckBox fx:id="chanceP2" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="31.0" prefWidth="73.0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="l3oKP2" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#l3oKButtonClick" prefHeight="30.0" prefWidth="73.0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="l4oKP2" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#l4oKButtonClick" prefHeight="32.0" prefWidth="73.0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="fullHouseP2" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#fullHouseButtonClick" prefHeight="30.0" prefWidth="73.0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="smStrP2" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#smStrButtonClick" prefHeight="31.0" prefWidth="73.0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="lrgStrP2" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#lrgStrButtonClick" prefHeight="32.0" prefWidth="73.0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="yahtzee1P2" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#yahtzee1ButtonClick" prefHeight="30.0" prefWidth="73.0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="chanceP2" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#chanceButtonClick" prefHeight="31.0" prefWidth="73.0" textAlignment="CENTER" />
                                                 <HBox prefHeight="25.0" prefWidth="73.0">
                                                    <children>
-                                                      <CheckBox fx:id="yahtzee2P2" alignment="CENTER" contentDisplay="BOTTOM" disable="true" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="26.0" prefWidth="24.0" textAlignment="CENTER" wrapText="true" />
-                                                      <CheckBox fx:id="yahtzee3P2" alignment="CENTER" contentDisplay="BOTTOM" disable="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="24.0" />
-                                                      <CheckBox fx:id="yahtzee4P2" alignment="CENTER" contentDisplay="BOTTOM" disable="true" layoutX="34.0" layoutY="10.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="28.0" />
+                                                      <CheckBox fx:id="yahtzee2P2" alignment="CENTER" contentDisplay="BOTTOM" disable="true" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#yahtzee2ButtonClick" prefHeight="26.0" prefWidth="24.0" textAlignment="CENTER" wrapText="true" />
+                                                      <CheckBox fx:id="yahtzee3P2" alignment="CENTER" contentDisplay="BOTTOM" disable="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#yahtzee3ButtonClick" prefHeight="36.0" prefWidth="24.0" />
+                                                      <CheckBox fx:id="yahtzee4P2" alignment="CENTER" contentDisplay="BOTTOM" disable="true" layoutX="34.0" layoutY="10.0" mnemonicParsing="false" onAction="#yahtzee4ButtonClick" prefHeight="34.0" prefWidth="28.0" />
                                                    </children>
                                                 </HBox>
                                              </children>
                                           </VBox>
+                                          <Label fx:id="yatzeeBonusScoreP2" alignment="CENTER" prefHeight="25.0" prefWidth="80.0" />
+                                          <Label fx:id="lowerScoreP2" alignment="CENTER" prefHeight="25.0" prefWidth="80.0" />
+                                          <Label fx:id="lowUpperScoreP2" alignment="CENTER" prefHeight="24.0" prefWidth="80.0" />
+                                          <Label fx:id="grandTotalP2" alignment="CENTER" prefHeight="23.0" prefWidth="80.0" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -216,15 +237,18 @@
                                           <Image url="@../../images/UpperSectionScore.png" />
                                        </image>
                                     </ImageView>
-                                    <VBox prefHeight="366.0" prefWidth="73.0">
+                                    <VBox prefHeight="270.0" prefWidth="68.0">
                                        <children>
                                           <Region prefHeight="46.0" prefWidth="73.0" />
-                                          <CheckBox fx:id="acesP3" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="36.0" prefWidth="73.0" textAlignment="CENTER" />
-                                          <CheckBox fx:id="twosP3" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="38.0" prefWidth="72.0" textAlignment="CENTER" />
-                                          <CheckBox fx:id="threesP3" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="38.0" prefWidth="73.0" textAlignment="CENTER" />
-                                          <CheckBox fx:id="foursP3" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="38.0" prefWidth="73.0" textAlignment="CENTER" />
-                                          <CheckBox fx:id="fivesP3" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="38.0" prefWidth="73.0" textAlignment="CENTER" />
-                                          <CheckBox fx:id="sixesP3" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="37.0" prefWidth="73.0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="acesP3" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#acesButtonClick" prefHeight="36.0" prefWidth="73.0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="twosP3" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#twosButtonClick" prefHeight="38.0" prefWidth="72.0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="threesP3" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#threesButtonClick" prefHeight="38.0" prefWidth="73.0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="foursP3" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#foursButtonClick" prefHeight="38.0" prefWidth="73.0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="fivesP3" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#fivesButtonClick" prefHeight="38.0" prefWidth="73.0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="sixesP3" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#sixesButtonClick" prefHeight="37.0" prefWidth="73.0" textAlignment="CENTER" />
+                                          <Label fx:id="upperScoreP3" alignment="CENTER" prefHeight="32.0" prefWidth="72.0" />
+                                          <Label fx:id="upperBonusP3" alignment="CENTER" prefHeight="32.0" prefWidth="72.0" textAlignment="CENTER" />
+                                          <Label fx:id="upperTotalP3" alignment="CENTER" prefHeight="32.0" prefWidth="72.0" />
                                        </children>
                                     </VBox>
                                     <ImageView fitHeight="370.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true">
@@ -234,25 +258,29 @@
                                     </ImageView>
                                     <VBox>
                                        <children>
-                                          <VBox prefHeight="391.0" prefWidth="76.0">
+                                          <VBox prefHeight="269.0" prefWidth="77.0">
                                              <children>
                                                 <Region prefHeight="26.0" prefWidth="76.0" />
-                                                <CheckBox fx:id="l3oKP3" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="76.0" textAlignment="CENTER" />
-                                                <CheckBox fx:id="l4oKP3" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="31.0" prefWidth="76.0" textAlignment="CENTER" />
-                                                <CheckBox fx:id="fullHouseP3" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="31.0" prefWidth="76.0" textAlignment="CENTER" />
-                                                <CheckBox fx:id="smStrP3" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="31.0" prefWidth="76.0" textAlignment="CENTER" />
-                                                <CheckBox fx:id="lrgStrP3" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="76.0" textAlignment="CENTER" />
-                                                <CheckBox fx:id="yahtzee1P3" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="34.0" prefWidth="75.0" textAlignment="CENTER" />
-                                                <CheckBox fx:id="chanceP3" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="76.0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="l3oKP3" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#l3oKButtonClick" prefHeight="30.0" prefWidth="76.0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="l4oKP3" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#l4oKButtonClick" prefHeight="31.0" prefWidth="76.0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="fullHouseP3" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#fullHouseButtonClick" prefHeight="31.0" prefWidth="76.0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="smStrP3" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#smStrButtonClick" prefHeight="31.0" prefWidth="76.0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="lrgStrP3" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#lrgStrButtonClick" prefHeight="30.0" prefWidth="76.0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="yahtzee1P3" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#yahtzee1ButtonClick" prefHeight="34.0" prefWidth="75.0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="chanceP3" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#chanceButtonClick" prefHeight="30.0" prefWidth="76.0" textAlignment="CENTER" />
                                                 <HBox prefHeight="26.0" prefWidth="76.0">
                                                    <children>
-                                                      <CheckBox fx:id="yahtzee2P3" alignment="CENTER" contentDisplay="BOTTOM" disable="true" mnemonicParsing="false" prefHeight="36.0" prefWidth="24.0" textAlignment="CENTER" wrapText="true" />
-                                                      <CheckBox fx:id="yahtzee3P3" alignment="CENTER" contentDisplay="BOTTOM" disable="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="24.0" />
-                                                      <CheckBox fx:id="yahtzee4P3" alignment="CENTER" contentDisplay="BOTTOM" disable="true" layoutX="34.0" layoutY="10.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="28.0" />
+                                                      <CheckBox fx:id="yahtzee2P3" alignment="CENTER" contentDisplay="BOTTOM" disable="true" mnemonicParsing="false" onAction="#yahtzee2ButtonClick" prefHeight="36.0" prefWidth="24.0" textAlignment="CENTER" wrapText="true" />
+                                                      <CheckBox fx:id="yahtzee3P3" alignment="CENTER" contentDisplay="BOTTOM" disable="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#yahtzee3ButtonClick" prefHeight="35.0" prefWidth="24.0" />
+                                                      <CheckBox fx:id="yahtzee4P3" alignment="CENTER" contentDisplay="BOTTOM" disable="true" layoutX="34.0" layoutY="10.0" mnemonicParsing="false" onAction="#yahtzee4ButtonClick" prefHeight="34.0" prefWidth="28.0" />
                                                    </children>
                                                 </HBox>
                                              </children>
                                           </VBox>
+                                          <Label fx:id="yatzeeBonusScoreP3" alignment="CENTER" prefHeight="25.0" prefWidth="80.0" />
+                                          <Label fx:id="lowerScoreP3" alignment="CENTER" prefHeight="25.0" prefWidth="80.0" />
+                                          <Label fx:id="lowUpperScoreP3" alignment="CENTER" prefHeight="24.0" prefWidth="80.0" />
+                                          <Label fx:id="grandTotalP3" alignment="CENTER" prefHeight="23.0" prefWidth="80.0" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -261,13 +289,13 @@
                         </AnchorPane>
                      </content>
                   </Tab>
-                  <Tab fx:id="player4tab" disable="true">
+                  <Tab fx:id="player4tab" disable="true" onSelectionChanged="#l3oKButtonClick">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
                               <HBox layoutX="133.0" layoutY="77.0" prefHeight="254.0" prefWidth="492.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <ImageView fitHeight="426.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="370.0" fitWidth="215.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../../images/UpperSectionScore.png" />
                                        </image>
@@ -275,12 +303,15 @@
                                     <VBox prefHeight="254.0" prefWidth="69.0">
                                        <children>
                                           <Region prefHeight="46.0" prefWidth="69.0" />
-                                          <CheckBox fx:id="acesP4" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="37.0" prefWidth="67.0" textAlignment="CENTER" />
-                                          <CheckBox fx:id="twosP4" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="39.0" prefWidth="69.0" textAlignment="CENTER" />
-                                          <CheckBox fx:id="threesP4" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="38.0" prefWidth="69.0" textAlignment="CENTER" />
-                                          <CheckBox fx:id="foursP4" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="37.0" prefWidth="69.0" textAlignment="CENTER" />
-                                          <CheckBox fx:id="fivesP4" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="38.0" prefWidth="69.0" textAlignment="CENTER" />
-                                          <CheckBox fx:id="sixesP4" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="37.0" prefWidth="69.0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="acesP4" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#acesButtonClick" prefHeight="37.0" prefWidth="67.0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="twosP4" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#twosButtonClick" prefHeight="39.0" prefWidth="69.0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="threesP4" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#threesButtonClick" prefHeight="38.0" prefWidth="69.0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="foursP4" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#foursButtonClick" prefHeight="37.0" prefWidth="69.0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="fivesP4" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#fivesButtonClick" prefHeight="38.0" prefWidth="69.0" textAlignment="CENTER" />
+                                          <CheckBox fx:id="sixesP4" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#sixesButtonClick" prefHeight="37.0" prefWidth="69.0" textAlignment="CENTER" />
+                                          <Label fx:id="upperScoreP4" alignment="CENTER" prefHeight="32.0" prefWidth="72.0" />
+                                          <Label fx:id="upperBonusP4" alignment="CENTER" prefHeight="32.0" prefWidth="72.0" textAlignment="CENTER" />
+                                          <Label fx:id="upperTotalP4" alignment="CENTER" prefHeight="32.0" prefWidth="72.0" />
                                        </children>
                                     </VBox>
                                     <ImageView fitHeight="369.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true">
@@ -293,20 +324,28 @@
                                           <VBox prefHeight="379.0" prefWidth="73.0">
                                              <children>
                                                 <Region prefHeight="27.0" prefWidth="73.0" />
-                                                <CheckBox fx:id="l3oKP4" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="31.0" prefWidth="73.0" textAlignment="CENTER" />
-                                                <CheckBox fx:id="l4oKP4" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="73.0" textAlignment="CENTER" />
-                                                <CheckBox fx:id="fullHouseP4" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="32.0" prefWidth="73.0" textAlignment="CENTER" />
-                                                <CheckBox fx:id="smStrP4" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="31.0" prefWidth="73.0" textAlignment="CENTER" />
-                                                <CheckBox fx:id="lrgStrP4" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="31.0" prefWidth="73.0" textAlignment="CENTER" />
-                                                <CheckBox fx:id="yahtzee1P4" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="31.0" prefWidth="73.0" textAlignment="CENTER" />
-                                                <CheckBox fx:id="chanceP4" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="73.0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="l3oKP4" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#l3oKButtonClick" prefHeight="31.0" prefWidth="73.0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="l4oKP4" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#l4oKButtonClick" prefHeight="30.0" prefWidth="73.0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="fullHouseP4" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#fullHouseButtonClick" prefHeight="32.0" prefWidth="73.0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="smStrP4" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#smStrButtonClick" prefHeight="31.0" prefWidth="73.0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="lrgStrP4" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#lrgStrButtonClick" prefHeight="31.0" prefWidth="73.0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="yahtzee1P4" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#yahtzee1ButtonClick" prefHeight="31.0" prefWidth="73.0" textAlignment="CENTER" />
+                                                <CheckBox fx:id="chanceP4" alignment="CENTER" disable="true" mnemonicParsing="false" onAction="#chanceButtonClick" prefHeight="30.0" prefWidth="73.0" textAlignment="CENTER" />
                                                 <HBox prefHeight="27.0" prefWidth="73.0">
                                                    <children>
-                                                      <CheckBox fx:id="yahtzee2P4" alignment="CENTER" contentDisplay="BOTTOM" disable="true" mnemonicParsing="false" prefHeight="36.0" prefWidth="24.0" textAlignment="CENTER" wrapText="true" />
-                                                      <CheckBox fx:id="yahtzee3P4" alignment="CENTER" contentDisplay="BOTTOM" disable="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="24.0" />
-                                                      <CheckBox fx:id="yahtzee4P4" alignment="CENTER" contentDisplay="BOTTOM" disable="true" layoutX="34.0" layoutY="10.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="28.0" />
+                                                      <CheckBox fx:id="yahtzee2P4" alignment="CENTER" contentDisplay="BOTTOM" disable="true" mnemonicParsing="false" onAction="#yahtzee2ButtonClick" prefHeight="36.0" prefWidth="24.0" textAlignment="CENTER" wrapText="true" />
+                                                      <CheckBox fx:id="yahtzee3P4" alignment="CENTER" contentDisplay="BOTTOM" disable="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#yahtzee3ButtonClick" prefHeight="36.0" prefWidth="24.0" />
+                                                      <CheckBox fx:id="yahtzee4P4" alignment="CENTER" contentDisplay="BOTTOM" disable="true" layoutX="34.0" layoutY="10.0" mnemonicParsing="false" onAction="#yahtzee4ButtonClick" prefHeight="34.0" prefWidth="28.0" />
                                                    </children>
                                                 </HBox>
+                                                <TextFlow prefHeight="25.0" prefWidth="73.0">
+                                                   <children>
+                                                      <Label fx:id="yatzeeBonusScoreP4" alignment="CENTER" prefHeight="25.0" prefWidth="80.0" />
+                                                      <Label fx:id="lowerScoreP4" alignment="CENTER" prefHeight="25.0" prefWidth="80.0" />
+                                                      <Label fx:id="lowUpperScoreP4" alignment="CENTER" prefHeight="24.0" prefWidth="80.0" />
+                                                      <Label fx:id="grandTotalP4" alignment="CENTER" prefHeight="23.0" prefWidth="80.0" />
+                                                   </children>
+                                                </TextFlow>
                                              </children>
                                           </VBox>
                                        </children>
@@ -330,6 +369,9 @@
                <font>
                   <Font size="18.0" />
                </font>
+               <HBox.margin>
+                  <Insets top="1.0" />
+               </HBox.margin>
             </Text>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  is up!" wrappingWidth="79.0908203125">
                <font>
@@ -338,9 +380,11 @@
                <rotationAxis>
                   <Point3D x="1.0" y="1.0" z="1.0" />
                </rotationAxis>
+               <HBox.margin>
+                  <Insets top="1.0" />
+               </HBox.margin>
             </Text>
             <Region prefHeight="27.0" prefWidth="98.0" />
-            <Button fx:id="score" disable="true" mnemonicParsing="false" onAction="#selectScoreClick" prefHeight="27.0" prefWidth="89.0" text="Score" />
             <Region prefHeight="27.0" prefWidth="150.0" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Round: ">
                <font>
