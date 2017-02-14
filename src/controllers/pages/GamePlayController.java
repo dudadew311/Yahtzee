@@ -1,11 +1,15 @@
 package controllers.pages;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 import application.Die;
 import application.ScoreCard;
 import controllers.MainController;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -14,6 +18,8 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 
 /**
@@ -83,6 +89,8 @@ public class GamePlayController {
 
 	/** The player up. */
 	private int playerUp = 0;
+	
+	public static String winner = "Raul";
 
 	/**
 	 * Sets the names on score card.
@@ -319,10 +327,46 @@ public class GamePlayController {
 
 		} else {
 			playerUp = 0;
-			roundsLbl.setText(String.valueOf(++roundNum + 1));
+			++roundNum;
+			if (roundNum >= 2){	
+				doPopup();
+			}
+			roundsLbl.setText(String.valueOf(roundNum + 1));
 			playerUpLbl.setText(players[playerUp].getName());
 			playerTabPane.getSelectionModel().select(playerUp);
 		}
+	}
+
+	private void doPopup() {
+
+		try {
+			winner = getWinner();
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Pages/GameOver.fxml"));
+			Parent root = loader.load();
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+			stage.initOwner(next.getScene().getWindow());
+			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.setScene(scene);
+			stage.showAndWait();
+		} catch (Exception e) {
+			System.out.println("somthing wrong with loading");
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 
+	 */
+	private String getWinner() {
+		int player = 0, highScore = 0;
+		for(int i=0;i<players.length;i++){
+			if(players[i].getScore() > highScore){
+				highScore = players[i].getScore();
+				player = i;
+			}
+		}
+		return players[player].getName();	
 	}
 
 	/**
