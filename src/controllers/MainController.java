@@ -45,10 +45,13 @@ public class MainController {
 		playerSelectController.init(this);
 		gamePlayController.init(this);
 		
-		
 	}
 	
 	
+	
+	public void newGameTab() {
+		tabPane.getSelectionModel().select(0);
+	}
 
 	/**
 	 * Sets the players.
@@ -59,11 +62,5 @@ public class MainController {
 		gamePlayController.setNames();
 		gamePlayController.initiateArrays();
 		gamePlayController.newGame();
-		
-		
-
 	}
-
-
-	
 }

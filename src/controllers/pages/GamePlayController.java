@@ -1,6 +1,5 @@
 package controllers.pages;
 
-import java.io.IOException;
 import java.util.Arrays;
 
 import application.Die;
@@ -90,6 +89,7 @@ public class GamePlayController {
 	/** The player up. */
 	private int playerUp = 0;
 	
+	/** The winner. */
 	public static String winner = "Raul";
 
 	/**
@@ -152,13 +152,13 @@ public class GamePlayController {
 		int flag = 0;
 		rollButton.setText("ROLL\n"+ String.valueOf(rollNum) + " Left");
 		roundsLbl.setText(String.valueOf(roundNum+1));
+		next.setDisable(true);
 
 		for(int i=0;i<players.length;i++){
 			if(players[i].isValid()){
 				playerUpLbl.setText(players[i].getName());
 				playerTabPane.getSelectionModel().select(i);
 				unlockRollButton();
-				unlockScoreButton();
 				flag++;
 				break;
 			} 
@@ -187,7 +187,7 @@ public class GamePlayController {
 	/**
 	 * Unlock score button.
 	 */
-	private void unlockScoreButton(){
+	private void unlockNextButton(){
 		next.setDisable(false);
 
 	}
@@ -293,10 +293,12 @@ public class GamePlayController {
 	 * Check rolls.
 	 */
 	private void checkRolls(){
+		next.setDisable(true);
 		playerTabPane.getSelectionModel().select(playerUp);
 		rollNum--;
 		if (rollNum == 0){
 			lockRollButton();
+			unlockNextButton();
 			for(int i=0;i<rollResult.length;i++){
 				rollResult[i] = dice[i].getSide();
 			}
@@ -328,7 +330,8 @@ public class GamePlayController {
 		} else {
 			playerUp = 0;
 			++roundNum;
-			if (roundNum >= 2){	
+			if (roundNum >= 13){
+				roundsLbl.setText("Game Over");
 				doPopup();
 			}
 			roundsLbl.setText(String.valueOf(roundNum + 1));
@@ -337,6 +340,9 @@ public class GamePlayController {
 		}
 	}
 
+	/**
+	 * Do popup.
+	 */
 	private void doPopup() {
 
 		try {
@@ -356,7 +362,9 @@ public class GamePlayController {
 	}
 
 	/**
-	 * 
+	 * Gets the winner.
+	 *
+	 * @return the winner
 	 */
 	private String getWinner() {
 		int player = 0, highScore = 0;
@@ -406,7 +414,10 @@ public class GamePlayController {
 		rollButton.setText("ROLL\n"+ String.valueOf(rollNum) + " Left");
 		++playerUp;	
 		checkPlayer();
-		rollButton.setDisable(false);
+		if(roundNum < 2) {
+			rollButton.setDisable(false);
+		}
+		next.setDisable(true);
 		resetLocks();
 	}
 	
@@ -733,13 +744,13 @@ public class GamePlayController {
 		if(!players[playerUp].isChanceUsed()) {
 			scoreCard[playerUp][12].setDisable(false);
 		}
-		if(isYahtzee(rollResult) && !players[playerUp].isYahtzeeBonus1Used()) {
+		if(isYahtzee(rollResult) && !players[playerUp].isYahtzeeBonus1Used() && players[playerUp].isYahtzeeUsed()) {
 			scoreCard[playerUp][13].setDisable(false);
 		}
-		if(isYahtzee(rollResult) && !players[playerUp].isYahtzeeBonus2Used()) {
+		if(isYahtzee(rollResult) && !players[playerUp].isYahtzeeBonus2Used() && players[playerUp].isYahtzeeUsed()){
 			scoreCard[playerUp][14].setDisable(false);
 		}
-		if(isYahtzee(rollResult) && !players[playerUp].isYahtzeeBonus3Used()) {
+		if(isYahtzee(rollResult) && !players[playerUp].isYahtzeeBonus3Used() && players[playerUp].isYahtzeeUsed()) {
 			scoreCard[playerUp][15].setDisable(false);
 		}
 	}

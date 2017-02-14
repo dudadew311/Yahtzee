@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controllers.pages.GameOverController">
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.pages.GameOverController">
    <center>
       <VBox prefHeight="200.0" prefWidth="527.0" BorderPane.alignment="CENTER">
          <children>
@@ -25,7 +24,7 @@
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Region prefHeight="79.0" prefWidth="96.0" />
-                  <Button fx:id="newGameButton" alignment="CENTER" mnemonicParsing="false" prefHeight="65.0" prefWidth="142.0" text="New Game">
+                  <Button fx:id="newGameButton" alignment="CENTER" mnemonicParsing="false" onAction="#newGameClick" prefHeight="65.0" prefWidth="142.0" text="New Game">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
@@ -33,7 +32,7 @@
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="closeGameButton" mnemonicParsing="false" prefHeight="65.0" prefWidth="132.0" text="Close Game">
+                  <Button fx:id="closeGameButton" mnemonicParsing="false" onAction="#closeGameClick" prefHeight="65.0" prefWidth="132.0" text="Close Game">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
