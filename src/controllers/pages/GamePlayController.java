@@ -414,7 +414,7 @@ public class GamePlayController {
 		rollButton.setText("ROLL\n"+ String.valueOf(rollNum) + " Left");
 		++playerUp;	
 		checkPlayer();
-		if(roundNum < 2) {
+		if(roundNum < 13) {
 			rollButton.setDisable(false);
 		}
 		next.setDisable(true);
