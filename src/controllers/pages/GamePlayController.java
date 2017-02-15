@@ -664,19 +664,7 @@ public class GamePlayController {
 		} else {
 			return false;
 		}
-//		
-//		int count = 0;
-//		Arrays.sort(roll);
-//		for(int i=0;i<(roll.length-1);i++){
-//			if (roll[i] == (roll[i+1])-1) {
-//				count++;
-//			}
-//		}
-//		if(count > 2){
-//			return true;
-//		} else {
-//			return false;
-//		}
+
 	}
 	
 	/**
