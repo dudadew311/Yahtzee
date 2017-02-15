@@ -1,5 +1,6 @@
 package controllers.pages;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import application.Die;
@@ -418,6 +419,7 @@ public class GamePlayController {
 			rollButton.setDisable(false);
 		}
 		next.setDisable(true);
+		lockPossibles();
 		resetLocks();
 	}
 	
@@ -644,19 +646,37 @@ public class GamePlayController {
 	 * @param roll the roll
 	 * @return true, if is sm str
 	 */
-	private static boolean isSmStr(int[] roll) {
-		int count = 0;
+	private static boolean isSmStr(int[] roll) {       
+		ArrayList<Integer> list = new ArrayList<Integer>(5);
 		Arrays.sort(roll);
-		for(int i=0;i<(roll.length-1);i++){
-			if (roll[i] == (roll[i+1])-1) {
-				count++;
+		for(int i=0;i<(roll.length-1);i++) {
+			if(roll[i] == roll[i+1]) {
+				
+			}else if(roll[i]+1 == roll[i+1]){
+			
+				list.add(roll[i]);
+			} else {
+				list.clear();
 			}
 		}
-		if(count > 2){
+		if(list.size()>=3){
 			return true;
 		} else {
 			return false;
 		}
+//		
+//		int count = 0;
+//		Arrays.sort(roll);
+//		for(int i=0;i<(roll.length-1);i++){
+//			if (roll[i] == (roll[i+1])-1) {
+//				count++;
+//			}
+//		}
+//		if(count > 2){
+//			return true;
+//		} else {
+//			return false;
+//		}
 	}
 	
 	/**
