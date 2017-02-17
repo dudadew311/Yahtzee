@@ -160,6 +160,7 @@ public class GamePlayController {
 				playerUpLbl.setText(players[i].getName());
 				playerTabPane.getSelectionModel().select(i);
 				unlockRollButton();
+				playerUp = i;
 				flag++;
 				break;
 			} 
@@ -329,7 +330,12 @@ public class GamePlayController {
 			}
 
 		} else {
-			playerUp = 0;
+			for(int i=0;i<players.length;i++){
+				if (players[i].isValid()) {
+					playerUp = i;
+					break;
+				}
+			}
 			++roundNum;
 			if (roundNum >= 13){
 				roundsLbl.setText("Game Over");
@@ -715,51 +721,67 @@ public class GamePlayController {
 		
 		if(isAces(rollResult) && !players[playerUp].isAcesUsed()) {
 			scoreCard[playerUp][0].setDisable(false);
+			scoreCard[playerUp][0].setStyle("-fx-background-color: blue;");
 		}
 		if(isTwos(rollResult) && !players[playerUp].isTwosUsed()) {
 			scoreCard[playerUp][1].setDisable(false);
+			scoreCard[playerUp][1].setStyle("-fx-background-color: blue;");
 		}
 		if(isThrees(rollResult) && !players[playerUp].isThreesUsed()) {
 			scoreCard[playerUp][2].setDisable(false);
+			scoreCard[playerUp][2].setStyle("-fx-background-color: blue;");
 		}
 		if(isFours(rollResult) && !players[playerUp].isFoursUsed()) {
 			scoreCard[playerUp][3].setDisable(false);
+			scoreCard[playerUp][3].setStyle("-fx-background-color: blue;");
 		}
 		if(isFives(rollResult) && !players[playerUp].isFivesUsed()) {
 			scoreCard[playerUp][4].setDisable(false);
+			scoreCard[playerUp][4].setStyle("-fx-background-color: blue;");
 		}
 		if(isSixes(rollResult) && !players[playerUp].isSixesUsed()) {
 			scoreCard[playerUp][5].setDisable(false);
+			scoreCard[playerUp][5].setStyle("-fx-background-color: blue;");
 		}
 		if(is3oK(rollResult) && !players[playerUp].isL3oKUsed()) {
 			scoreCard[playerUp][6].setDisable(false);
+			scoreCard[playerUp][6].setStyle("-fx-background-color: blue;");
 		}
 		if(is4oK(rollResult) && !players[playerUp].isL4oKUsed()) {
 			scoreCard[playerUp][7].setDisable(false);
+			scoreCard[playerUp][7].setStyle("-fx-background-color: blue;");
 		}
 		if(isFullHouse(rollResult) && !players[playerUp].isFullHouseUsed()) {
 			scoreCard[playerUp][8].setDisable(false);
+			scoreCard[playerUp][8].setStyle("-fx-background-color: blue;");
 		}
 		if(isSmStr(rollResult) && !players[playerUp].isSmallStrUsed()) {
 			scoreCard[playerUp][9].setDisable(false);
+			scoreCard[playerUp][9].setStyle("-fx-background-color: blue;");
 		}
 		if(isLrgStr(rollResult) && !players[playerUp].isLrgStrUsed()) {
 			scoreCard[playerUp][10].setDisable(false);
+			scoreCard[playerUp][10].setStyle("-fx-background-color: blue;");
 		}
 		if(isYahtzee(rollResult) && !players[playerUp].isYahtzeeUsed()) {
 			scoreCard[playerUp][11].setDisable(false);
+			scoreCard[playerUp][11].setStyle("-fx-background-color: blue;");
 		}
 		if(!players[playerUp].isChanceUsed()) {
 			scoreCard[playerUp][12].setDisable(false);
+			scoreCard[playerUp][12].setStyle("-fx-background-color: blue;");
 		}
 		if(isYahtzee(rollResult) && !players[playerUp].isYahtzeeBonus1Used() && players[playerUp].isYahtzeeUsed()) {
 			scoreCard[playerUp][13].setDisable(false);
+			scoreCard[playerUp][13].setStyle("-fx-background-color: blue;");
 		}
 		if(isYahtzee(rollResult) && !players[playerUp].isYahtzeeBonus2Used() && players[playerUp].isYahtzeeUsed()){
 			scoreCard[playerUp][14].setDisable(false);
+			scoreCard[playerUp][14].setStyle("-fx-background-color: blue;");
 		}
 		if(isYahtzee(rollResult) && !players[playerUp].isYahtzeeBonus3Used() && players[playerUp].isYahtzeeUsed()) {
 			scoreCard[playerUp][15].setDisable(false);
+			scoreCard[playerUp][15].setStyle("-fx-background-color: blue;");
 		}
 	}
 	
@@ -771,6 +793,7 @@ public class GamePlayController {
 		for(int i=0;i<4;i++){
 			for(int j=0;j<16;j++) {
 			scoreCard[i][j].setDisable(true);
+			scoreCard[i][j].setStyle(null);
 			initiateArrays();
 			}
 		}
