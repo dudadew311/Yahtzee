@@ -69,5 +69,6 @@ public class GameOverController {
 	@FXML
 	private void closeGameClick(){
 		Platform.exit();
+		System.exit(0);
 	}
 }
