@@ -8,7 +8,6 @@ package controllers.pages;
  * @date 	Created on: Feb 13, 2017
  */
 
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -17,7 +16,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-
 
 /**
  * The Class GameOverController.
